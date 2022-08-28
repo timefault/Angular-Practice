@@ -15,11 +15,14 @@ import { HomeComponent } from './components/home/home.component';
 import { JokePageComponent } from './components/joke-page/joke-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { WeatherPageComponent } from './components/weather-page/weather-page.component';
+import { BulletinBoardComponent } from './components/bulletin-board/bulletin-board.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'jokepage', component: JokePageComponent },
-  { path: 'weatherpage', component: WeatherPageComponent }
+  { path: 'weatherpage', component: WeatherPageComponent },
+  { path: 'bulletinboard', component: BulletinBoardComponent }
+
 ];
 
 @NgModule({
@@ -29,7 +32,8 @@ const routes: Routes = [
     HomeComponent,
     JokePageComponent,
     NavbarComponent,
-    WeatherPageComponent
+    WeatherPageComponent,
+    BulletinBoardComponent
   ],
   imports: [
     BrowserModule,

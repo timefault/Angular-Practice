@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { JokeService } from './joke.service';
+import { JokeService } from '../../services/joke.service';
 @Component({
   selector: 'app-joke',
   templateUrl: './joke.component.html',

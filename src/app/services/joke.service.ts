@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 import { Observable } from 'rxjs';
-import { IJoke } from './joke.model';
+import { IJoke } from '../components/joke/joke.model';
 
 @Injectable({
   providedIn: 'root'
