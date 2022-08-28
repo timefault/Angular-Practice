@@ -1,0 +1,28 @@
+<!-- refactor joke to component -->
+<mat-card class="card">
+    <mat-card-header>
+        <fieldset class="flex-container">
+            <h3 class="heading-category">Categories</h3>
+            <mat-checkbox *ngFor="let category of categories" [(ngModel)]="category.isChecked">
+                {{ category.name}}
+            </mat-checkbox>
+        </fieldset>
+    </mat-card-header>
+    <mat-card-content class="content">
+        <div *ngIf="(joke$ | async) as joke; else loading">
+            <div *ngIf="joke?.joke == undefined; else onepart">
+                <p>{{ joke?.setup }}</p>
+                <p><i>{{ joke?.delivery }}</i></p>
+            </div>
+            <ng-template #onepart>
+                <p><i>{{ joke?.joke }}</i></p>
+            </ng-template>
+        </div>
+        <ng-template #loading>
+            <p>Loading...</p>
+        </ng-template>
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="getJoke()">Next joke</button>
+    </mat-card-actions>
+</mat-card>

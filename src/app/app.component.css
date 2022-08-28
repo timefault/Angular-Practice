@@ -1,0 +1,14 @@
+.flex-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: space-around;
+    /* margin-bottom: 1em; */
+}
+
+.flex-container>* {
+    height: 100px;
+}
