@@ -1,0 +1,27 @@
+a {
+    text-decoration: none;
+}
+
+li {
+    margin: 5px;
+    list-style: none;
+    border: 1px solid pink;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: yellow;
+    border: 1px solid black;
+}
+
+.logo {
+    font-weight: 500;
+    border: 1px solid green;
+}
+
+.navigation-primary {
+    border: 1px solid red;
+    display: flex;
+}

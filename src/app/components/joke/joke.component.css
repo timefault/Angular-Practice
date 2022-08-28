@@ -1,0 +1,44 @@
+.card {
+    max-width: 400px;
+    background-color: lightgreen;
+    padding: 2em;
+    line-height: 1.5;
+    margin: 1em auto;
+}
+
+button {
+    display: block;
+    padding: 10px;
+    background-color: purple;
+    color: white;
+    font-size: 1.1em;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.card .content {
+    font-size: 1.2em;
+}
+
+.flex-container {
+    /* display: flex; */
+    flex-direction: column;
+}
+
+.heading-category {
+    margin-block-end: 0;
+    font-weight: 300;
+}
+
+fieldset {
+    border: none;
+    box-shadow: 0 0 5px black;
+    background-color: darkgreen;
+    color: whitesmoke;
+}
+
+.content p {
+    padding: 3em;
+    background-color: powderblue;
+    border-radius: 50%;
+}
