@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { JokeComponent } from './joke/joke.component';
+import { JokeComponent } from './components/joke/joke.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -11,12 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
-import { HomeComponent } from './home/home.component';
-import { JokePageComponent } from './joke-page/joke-page.component';
+import { HomeComponent } from './components/home/home.component';
+import { JokePageComponent } from './components/joke-page/joke-page.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { WeatherPageComponent } from './components/weather-page/weather-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'jokepage', component: JokePageComponent }
+  { path: 'jokepage', component: JokePageComponent },
+  { path: 'weatherpage', component: WeatherPageComponent }
 ];
 
 @NgModule({
@@ -24,7 +27,9 @@ const routes: Routes = [
     AppComponent,
     JokeComponent,
     HomeComponent,
-    JokePageComponent
+    JokePageComponent,
+    NavbarComponent,
+    WeatherPageComponent
   ],
   imports: [
     BrowserModule,

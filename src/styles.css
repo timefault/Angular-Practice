@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --clr-background: hsl(180, 25%, 25%);
+}
 
 html,
 body {
@@ -8,5 +11,17 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    /* background-color: black; */
+    background-color: var(--clr-background);
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.page-title {
+    padding: 1em;
+    text-align: center;
+    background-color: hsl(180, 25%, 30%);
 }
