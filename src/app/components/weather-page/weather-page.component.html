@@ -1,4 +1,7 @@
 <h1 class="page-title">Weather</h1>
 <div class="flex-container">
-
+    <h2>{{weatherData.sys.sunset * 1000 | date}}</h2>
+    <h1>{{weatherData.weather[0].main}}</h1>
+    <img src="http://openweathermap.org/img/wn/{{weatherData.weather[0].icon}}@4x.png" alt="">
+    <h2>{{weatherData.main.temp.toFixed(0)}}&deg; F</h2>
 </div>
