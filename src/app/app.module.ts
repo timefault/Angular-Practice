@@ -16,6 +16,7 @@ import { JokePageComponent } from './components/joke-page/joke-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { WeatherPageComponent } from './components/weather-page/weather-page.component';
 import { BulletinBoardComponent } from './components/bulletin-board/bulletin-board.component';
+import { MapComponent } from './components/map/map.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,7 +34,8 @@ const routes: Routes = [
     JokePageComponent,
     NavbarComponent,
     WeatherPageComponent,
-    BulletinBoardComponent
+    BulletinBoardComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
