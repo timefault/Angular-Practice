@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-bulletin-board',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BulletinBoardComponent implements OnInit {
 
-  constructor() { }
+  posts$?: Observable<any>;
+  constructor(/* bulletin board service */) { }
 
   ngOnInit(): void {
   }
 
+  getAllPosts() {
+    // posts$=bulletinBoardService.getAllPosts();
+  }
 }

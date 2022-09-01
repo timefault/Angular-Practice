@@ -34,6 +34,7 @@ export class JokeService {
         currentDelimiter++;
       });
     }
+    endpoint += '?blacklistFlags=nsfw,racist,sexist,explicit';  // there are some really poor taste jokes
     console.log("======" + endpoint);
     return this.httpClient.get(endpoint);
 
