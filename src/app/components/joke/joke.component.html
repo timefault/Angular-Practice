@@ -1,7 +1,7 @@
 <!-- refactor joke to component -->
-<mat-card class="card">
+<mat-card class="card flex-container">
     <mat-card-header>
-        <fieldset class="flex-container">
+        <fieldset class="flex-container categories">
             <h3 class="heading-category">Categories</h3>
             <mat-checkbox *ngFor="let category of categories" [(ngModel)]="category.isChecked">
                 {{ category.name}}
@@ -22,7 +22,7 @@
             <p>Loading...</p>
         </ng-template>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions class="flex-bottom">
         <button (click)="getJoke()">Next joke</button>
     </mat-card-actions>
 </mat-card>

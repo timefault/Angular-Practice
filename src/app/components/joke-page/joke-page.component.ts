@@ -7,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JokePageComponent implements OnInit {
 
-  // jokeCount: number = 4;
-  value: number = 4;
+  jokeCount: number = 3;
   constructor() {
   }
 

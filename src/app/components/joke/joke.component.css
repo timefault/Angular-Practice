@@ -4,21 +4,26 @@
 }
 
 .card {
-    width: 400px;
-    height: 700px;
     background-color: var(--clr-background-primary);
-    padding: 2em;
     line-height: 1.5;
-    margin: 1em auto;
+    gap: 1em;
+    flex-direction: column;
+    width: 400px;
+    height: 100%;
+}
+
+.flex-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-grow: 1;
 }
 
 button {
-    display: block;
     padding: 10px;
     background-color: purple;
     color: white;
     font-size: 1.1em;
-    margin: 0 auto;
     border-radius: 10px;
 }
 
@@ -26,8 +31,8 @@ button {
     font-size: 1.2em;
 }
 
-.flex-container {
-    /* display: flex; */
+.categories {
+    padding: 10px;
     flex-direction: column;
 }
 
@@ -50,7 +55,15 @@ fieldset {
     border-radius: 50%;
 }
 
-.bottom-button {
-    justify-content: space-between;
-    height: 100%;
+.content p:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.bottom-center {
+    position: absolute;
+    bottom: 0;
+}
+
+.flex-container {
+    flex-wrap: nowrap;
 }

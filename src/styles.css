@@ -4,6 +4,12 @@
     --clr-background-navbar: #ffd740;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html,
 body {
     height: 100%;
@@ -16,7 +22,7 @@ body {
 }
 
 .flex-container {
-    display: flex;
+    display: flex !important;
     flex-wrap: wrap;
     justify-content: space-around;
 }
@@ -25,9 +31,6 @@ body {
     padding: 1em;
     text-align: center;
     background-color: hsl(180, 25%, 30%);
-}
-
-.page-title>* {
-    border: 1px solid black;
-    padding: 1em;
+    letter-spacing: .4em;
+    text-transform: uppercase;
 }

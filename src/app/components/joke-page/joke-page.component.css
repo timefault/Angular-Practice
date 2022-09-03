@@ -1,15 +1,28 @@
 .flex-container {
-    width: 100%;
     justify-content: space-around;
-}
-
-.slider {
-    width: 90%;
-    /* margin: 0 auto; */
+    gap: 3em;
 }
 
 .slider-label {
-    font-size: 1.2em;
-    color: white;
-    margin-left: 5px;
+    display: block;
+    text-align: center;
+    font-size: 1.7em;
+    /* color: white; */
+    color: lightgreen;
+    font-weight: 100;
+    margin-top: 1em;
+}
+
+.slider-label span {
+    color: #ffd740;
+    font-size: 1.1em;
+    font-weight: 900;
+
+}
+
+@media (max-width: 480px) {
+    .flex-container {
+        flex-direction: column;
+        gap: 0;
+    }
 }
