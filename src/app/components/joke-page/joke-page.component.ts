@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JokePageComponent implements OnInit {
 
-  constructor() { }
+  // jokeCount: number = 4;
+  value: number = 4;
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
+  createRange(iter: number) {
+    // return new Array(number);
+    return new Array(iter).fill(0)
+      .map((n, index) => index + 1);
+  }
 }

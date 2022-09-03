@@ -1,6 +1,12 @@
+:host {
+    --clr-background-primary: lightgreen;
+    --clr-background-secondary:
+}
+
 .card {
-    max-width: 400px;
-    background-color: lightgreen;
+    width: 400px;
+    height: 700px;
+    background-color: var(--clr-background-primary);
     padding: 2em;
     line-height: 1.5;
     margin: 1em auto;
@@ -42,4 +48,9 @@ fieldset {
     background-color: powderblue;
     box-shadow: 1px 1px 5px black;
     border-radius: 50%;
+}
+
+.bottom-button {
+    justify-content: space-between;
+    height: 100%;
 }

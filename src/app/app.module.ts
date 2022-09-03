@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSliderModule } from '@angular/material/slider';
+
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { JokePageComponent } from './components/joke-page/joke-page.component';
@@ -17,6 +19,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { WeatherPageComponent } from './components/weather-page/weather-page.component';
 import { BulletinBoardComponent } from './components/bulletin-board/bulletin-board.component';
 import { MapComponent } from './components/map/map.component';
+import { SliderComponent } from './components/slider/slider.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,7 +38,8 @@ const routes: Routes = [
     NavbarComponent,
     WeatherPageComponent,
     BulletinBoardComponent,
-    MapComponent
+    MapComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +47,7 @@ const routes: Routes = [
     HttpClientModule,
     MatCardModule,
     MatCheckboxModule,
+    MatSliderModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],

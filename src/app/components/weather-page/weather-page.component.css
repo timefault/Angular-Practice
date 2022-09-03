@@ -1,3 +1,8 @@
+:host {
+    --clr-font: white;
+    --clr-background-info: hsl(180, 25%, 10%);
+}
+
 a {
     text-decoration: none;
 }
@@ -8,5 +13,16 @@ a {
 }
 
 .flex-container>* {
-    border: 1px solid blue;
+    color: var(--clr-font);
+    /* border: 1px solid blue; */
+    background-color: var(--clr-background-info);
+    width: 100%;
+    text-align: center;
+    padding: 1em 0;
+}
+
+.flex-container img {
+    max-width: 25%;
+    border-radius: 5%;
+    padding: 0 100px;
 }

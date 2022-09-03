@@ -1,6 +1,6 @@
 <h1 class="page-title">Jokes</h1>
+<mat-slider class="slider" min="1" max="5" step="1" [(ngModel)]="value"></mat-slider>
+<label class="slider-label" for="">{{value}}</label>
 <div class="flex-container">
-    <app-joke></app-joke>
-    <app-joke></app-joke>
-    <app-joke></app-joke>
+    <app-joke *ngFor="let iter of createRange(value)"></app-joke>
 </div>

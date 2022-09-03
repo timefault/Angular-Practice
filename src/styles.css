@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-    --clr-background: hsl(180, 25%, 25%);
+    --clr-background-html: hsl(180, 25%, 25%);
+    --clr-background-navbar: #ffd740;
 }
 
 html,
@@ -10,8 +11,8 @@ body {
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    background-color: var(--clr-background);
+    font-family: 'Anek Teluga', "Helvetica Neue", sans-serif;
+    background-color: var(--clr-background-html);
 }
 
 .flex-container {
@@ -24,4 +25,9 @@ body {
     padding: 1em;
     text-align: center;
     background-color: hsl(180, 25%, 30%);
+}
+
+.page-title>* {
+    border: 1px solid black;
+    padding: 1em;
 }
