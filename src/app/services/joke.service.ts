@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class JokeService {
 
   REST_API = 'https://v2.jokeapi.dev/joke/'; //Programming?format=json'
-  headers = new HttpHeaders().set(
+  HEADERS = new HttpHeaders().set(  // not used
     'Content-Type',
     'application/json'
   );
@@ -20,7 +20,6 @@ export class JokeService {
   ): Observable<any> {
     let endpoint = this.REST_API;
     let delimiterCount = categories.reduce((prev, curr) => { if (curr.isChecked) return prev + 1; return prev; }, 0);
-    console.log('+++++++++' + delimiterCount);
     let currentDelimiter = 1;
     if (delimiterCount == 1) endpoint += categories.filter(cat => cat.isChecked)[0].name;
     else if (delimiterCount > 1) {
@@ -35,7 +34,6 @@ export class JokeService {
       });
     }
     endpoint += '?blacklistFlags=nsfw,racist,sexist,explicit';  // there are some really poor taste jokes
-    console.log("======" + endpoint);
     return this.httpClient.get(endpoint);
 
   }
