@@ -1,0 +1,6 @@
+:host {
+    width: calc(100% - 140px);
+    top: 65px;
+    display: flex;
+    flex-direction: column;
+}

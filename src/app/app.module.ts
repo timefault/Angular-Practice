@@ -20,6 +20,9 @@ import { WeatherPageComponent } from './components/weather-page/weather-page.com
 import { BulletinBoardComponent } from './components/bulletin-board/bulletin-board.component';
 import { MapComponent } from './components/map/map.component';
 import { SliderComponent } from './components/slider/slider.component';
+import { PostComponent } from './components/post/post.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MainContentComponent } from './components/main-content/main-content.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,7 +42,10 @@ const routes: Routes = [
     WeatherPageComponent,
     BulletinBoardComponent,
     MapComponent,
-    SliderComponent
+    SliderComponent,
+    PostComponent,
+    SidebarComponent,
+    MainContentComponent
   ],
   imports: [
     BrowserModule,

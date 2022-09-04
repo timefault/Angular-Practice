@@ -1,22 +1,9 @@
+.main-content {
+    position: absolute;
+    left: 140px;
+    /* width: calc(100% - 140px); */
+}
+
 a {
     text-decoration: none;
-}
-
-/* .flex-container {
-    margin: 0 auto;
-    height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-    justify-content: space-around;
-} */
-
-.flex-container>* {
-    height: 100px;
-}
-
-.page-title {
-    padding: 1em;
-    text-align: center;
-    background-color: hsl(180, 25%, 30%);
 }

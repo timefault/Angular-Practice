@@ -1,8 +1,5 @@
 <h1 class="page-title">Bulletin board</h1>
-<div *ngIf="(posts$ | async) as posts; else Else">
-    <mat-card *ngFor="let post of posts.data">
-        <mat-card-title>{{post.name}}</mat-card-title>
-        <mat-card-content>{{post.message}}</mat-card-content>
-    </mat-card>
+<div *ngIf="(posts$ | async) as posts; else Else" class="flex-container">
+    <app-post *ngFor="let post of posts.data" [post]="post"></app-post>
 </div>
-<ng-template #Else></ng-template>
+<ng-template #Else>Loading...</ng-template>

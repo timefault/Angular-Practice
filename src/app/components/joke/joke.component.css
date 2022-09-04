@@ -10,13 +10,15 @@
     flex-direction: column;
     width: 400px;
     height: 100%;
+    /* flex-wrap: nowrap; */
 }
 
 .flex-bottom {
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
 }
 
 button {
@@ -62,8 +64,4 @@ fieldset {
 .bottom-center {
     position: absolute;
     bottom: 0;
-}
-
-.flex-container {
-    flex-wrap: nowrap;
 }

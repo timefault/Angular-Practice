@@ -1,0 +1,14 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 5px auto;
+}
+
+.card-actions {
+    width: 100%;
+    align-self: flex-end;
+
+    display: flex;
+    justify-content: space-between;
+}

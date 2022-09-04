@@ -4,27 +4,23 @@
     --clr-background-navbar: #ffd740;
 }
 
-* {
+*,
+::before,
+::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 html,
-body {
-    height: 100%;
-}
 
 body {
-    margin: 0;
     font-family: 'Anek Teluga', "Helvetica Neue", sans-serif;
     background-color: var(--clr-background-html);
 }
 
 .flex-container {
     display: flex !important;
-    flex-wrap: wrap;
-    justify-content: space-around;
 }
 
 .page-title {
