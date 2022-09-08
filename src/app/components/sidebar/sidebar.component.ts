@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  getFromMainComponent?: string;  // test prop
+  // link to activated route observable
+
   availableActions = [
     {
       name: "first action",

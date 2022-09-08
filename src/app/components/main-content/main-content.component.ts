@@ -7,9 +7,6 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 })
 export class MainContentComponent implements OnInit {
 
-  @Input() childAvailableActions: any;
-  @Output() availableActions: any;
-
   constructor() { }
 
   ngOnInit(): void {
