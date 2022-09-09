@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { IAction } from '../classes/action.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainComponentService {
-  mainComponentMethods$?: Observable<IAction[]>;  // link to activated route observable
+  mainComponentMethods$?: Observable<IAction[]>;
 
   constructor() { }
-
-  trackMainComponentMethods() { }
-  getMainComponentMethods() { }
-
+  subject = new Subject<any>();
+  data$ = this.subject.asObservable();
+  getMessage() {
+    return this.data$;
+  }
+  sendMessage(data: any) {
+    this.subject.next(data);
+  }
 }

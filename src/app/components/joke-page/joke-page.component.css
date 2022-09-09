@@ -5,6 +5,10 @@
     gap: 3em;
 }
 
+.mat-slider-vertical {
+    width: 100%;
+}
+
 .slider-label {
     display: block;
     text-align: center;
@@ -27,4 +31,28 @@
         flex-direction: column;
         gap: 0;
     }
+}
+
+.drawer-container {
+    /* background-color: var(--clr-background-primary); */
+    background-color: #ACA;
+    height: 100vh;
+    top: 60px;
+}
+
+.drawer {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    background-color: #333;
+}
+
+/* .drawer>* {
+    width: 100%;
+} */
+
+.center {
+    display: flex;
+    justify-content: center;
+    /* margin: 0 auto; */
 }

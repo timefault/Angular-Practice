@@ -1,6 +1,14 @@
-<h1 class="page-title">Jokes</h1>
-<label class="slider-label" for=""><span>{{jokeCount}}</span> Jokes</label>
-<app-slider [(count)]="jokeCount"></app-slider>
-<div class="flex-container">
-    <app-joke *ngFor="let iter of createRange(jokeCount)"></app-joke>
-</div>
+<mat-drawer-container class="drawer-container">
+    <mat-drawer #drawer class="drawer">
+
+        <label class="slider-label" for=""><span>{{jokeCount}}</span> Jokes</label>
+        <div class="center">
+            <app-slider [(count)]="jokeCount"></app-slider>
+        </div>
+    </mat-drawer>
+    <h1 class="page-title">Jokes</h1>
+    <button mat-button (click)="drawer.toggle()" class="drawer-button">toggle sidenav</button>
+    <div class="flex-container">
+        <app-joke *ngFor="let iter of createRange(jokeCount)"></app-joke>
+    </div>
+</mat-drawer-container>

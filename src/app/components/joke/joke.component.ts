@@ -23,7 +23,7 @@ export class JokeComponent implements OnInit {
   constructor(public jokeService: JokeService) {
   }
 
-  trackByFn(item: Object) { return item; }
+  // trackByFn(item: Object) { return item; }
 
   getJoke(): void {
     this.joke$ = this.jokeService.getJoke(this.categories);

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IAction } from 'src/app/classes/action.model';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,28 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  getFromMainComponent?: string;  // test prop
-  // link to activated route observable
+  @Input() actions?: any;
 
-  availableActions = [
-    {
-      name: "first action",
-      action: this.doSomething
-    },
-    {
-      name: "second action",
-      action: this.doSomethingElse
-    }
-  ];
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  doSomething() {
-    console.log("Executed something");
-  }
-  doSomethingElse() {
-    console.log("Executed somethingElse");
-  }
 }

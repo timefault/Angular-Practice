@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
@@ -54,6 +55,7 @@ const routes: Routes = [
     MatCardModule,
     MatCheckboxModule,
     MatSliderModule,
+    MatSidenavModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],
