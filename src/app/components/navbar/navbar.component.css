@@ -3,8 +3,9 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 2;
 }
+
 
 a {
     text-decoration: none;
@@ -29,6 +30,8 @@ li {
     background-color: var(--clr-background-navbar);
     height: 65px;
     /* border: 1px solid black; */
+
+
 }
 
 .logo {

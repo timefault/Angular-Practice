@@ -29,4 +29,6 @@ body {
     background-color: hsl(180, 25%, 30%);
     letter-spacing: .4em;
     text-transform: uppercase;
+    color: #111;
+    /* color: black; */
 }

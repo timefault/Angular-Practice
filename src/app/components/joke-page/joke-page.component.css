@@ -5,10 +5,6 @@
     gap: 3em;
 }
 
-.mat-slider-vertical {
-    width: 100%;
-}
-
 .slider-label {
     display: block;
     text-align: center;
@@ -47,12 +43,28 @@
     background-color: #333;
 }
 
-/* .drawer>* {
-    width: 100%;
-} */
+.drawer-button {
+    position: fixed;
+    top: 66px;
+    left: 0;
+    z-index: 3;
+
+    padding: 10px;
+    border-radius: 10%;
+    color: white;
+    background-color: purple;
+    /* font-size: 1em; */
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all .3 ease-in;
+}
+
+.drawer-button:hover {
+    color: orange;
+}
 
 .center {
     display: flex;
     justify-content: center;
-    /* margin: 0 auto; */
 }

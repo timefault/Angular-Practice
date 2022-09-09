@@ -27,6 +27,11 @@ button {
     color: white;
     font-size: 1.1em;
     border-radius: 10px;
+    transition: all .3 ease-in;
+}
+
+button:hover {
+    color: orange;
 }
 
 .card .content {
