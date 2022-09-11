@@ -1,4 +1,9 @@
-# Crashcourse
+# Angular Practice
+
+This is an application I am building to practice wiring code to public and custom apis. It includes a jokes page, weather page, and a bulletin board. The bulletin board uses MySQL and NodeJS for the backend.
+
+
+# Crashcourse - (local name of project)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
 
