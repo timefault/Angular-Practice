@@ -14,7 +14,7 @@ export class JokeComponent implements OnInit {
   categories: any[] = [
     { name: 'Programming', isChecked: true },
     { name: 'Misc', isChecked: false },
-    { name: 'Dark', isChecked: false },
+    // { name: 'Dark', isChecked: false },
     { name: 'Pun', isChecked: false },
     { name: 'Spooky', isChecked: false },
     { name: 'Christmas', isChecked: false }

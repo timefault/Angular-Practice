@@ -1,12 +1,13 @@
 :host {
     --clr-background-primary: lightgreen;
-    --clr-background-secondary:
 }
 
 .card {
     background-color: var(--clr-background-primary);
     line-height: 1.5;
-    gap: 1em;
+    /* gap: 1em; */
+    margin-top: 10px;
+    margin-bottom: 5px;
     flex-direction: column;
     width: 400px;
     height: 100%;
@@ -32,6 +33,10 @@ button {
 
 button:hover {
     color: orange;
+}
+
+.content {
+    margin-top: 10px;
 }
 
 .card .content {
@@ -69,4 +74,11 @@ fieldset {
 .bottom-center {
     position: absolute;
     bottom: 0;
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+
 }

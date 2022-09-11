@@ -1,13 +1,22 @@
-<app-sidebar></app-sidebar>
-<main>
-    <h1 class="page-title">Weather</h1>
-    <div class="flex-container" *ngIf="(weatherData$ | async) as weatherData; else Loading">
-        <h1>{{weatherData.name}}</h1>
-        <h2>{{weatherData.sys.sunset * 1000 | date}}</h2>
-        <h1>{{weatherData.weather[0].main}}</h1>
-        <img src="http://openweathermap.org/img/wn/{{weatherData.weather[0].icon}}@4x.png" alt="">
-        <h2>{{weatherData.main.temp.toFixed(0)}}&deg; F</h2>
-    </div>
-    <ng-template #Loading>Loading...</ng-template>
-    <app-map class="map"></app-map>
-</main>
+<mat-drawer-container class="drawer-container">
+    <mat-drawer #drawer class="drawer">
+        <div class="drawer-flex">
+            <label for="">zip code</label>
+            <label for="">favorites</label>
+            <label for="">forecast</label>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <h1 class="page-title">Weather</h1>
+        <button (click)="drawer.toggle()">options</button>
+        <div class="flex-container" *ngIf="(weatherData$ | async) as weatherData; else Loading">
+            <h1>{{weatherData.name}}</h1>
+            <h2>{{weatherData.sys.sunset * 1000 | date}}</h2>
+            <h1>{{weatherData.weather[0].main}}</h1>
+            <img src="http://openweathermap.org/img/wn/{{weatherData.weather[0].icon}}@4x.png" alt="">
+            <h2>{{weatherData.main.temp.toFixed(0)}}&deg; F</h2>
+        </div>
+        <ng-template #Loading>Loading...</ng-template>
+        <app-map class="map"></app-map>
+    </mat-drawer-content>
+</mat-drawer-container>

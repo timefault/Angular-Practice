@@ -1,8 +1,11 @@
-<app-sidebar [actions]="actions"></app-sidebar>
-<main>
-    <h1 class="page-title">Bulletin board</h1>
-    <div *ngIf="(posts$ | async) as posts; else Else" class="flex-container">
-        <app-post *ngFor="let post of posts.data" [post]="post"></app-post>
-    </div>
-    <ng-template #Else>Loading...</ng-template>
-</main>
+<mat-drawer-container class="drawer-container">
+    <mat-drawer class="drawer"></mat-drawer>
+    <mat-drawer-content>
+        <h1 class="page-title">Bulletin board</h1>
+        <button>options</button>
+        <div *ngIf="(posts$ | async) as posts; else Else" class="flex-container">
+            <app-post *ngFor="let post of posts.data" [post]="post"></app-post>
+        </div>
+        <ng-template #Else>Loading...</ng-template>
+    </mat-drawer-content>
+</mat-drawer-container>

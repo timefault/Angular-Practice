@@ -6,9 +6,11 @@
             <app-slider [(count)]="jokeCount"></app-slider>
         </div>
     </mat-drawer>
-    <h1 class="page-title">Jokes</h1>
-    <button mat-button (click)="drawer.toggle()" class="drawer-button zz-top">options</button>
-    <div class="flex-container">
-        <app-joke *ngFor="let iter of createRange(jokeCount)"></app-joke>
-    </div>
+    <mat-drawer-content>
+        <h1 class="page-title">Jokes</h1>
+        <button mat-button (click)="drawer.toggle()" class="drawer-button zz-top">options</button>
+        <div class="flex-container">
+            <app-joke *ngFor="let iter of createRange(jokeCount)"></app-joke>
+        </div>
+    </mat-drawer-content>
 </mat-drawer-container>

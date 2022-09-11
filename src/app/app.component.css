@@ -1,9 +1,0 @@
-.main-content {
-    position: absolute;
-    left: 140px;
-    /* width: calc(100% - 140px); */
-}
-
-a {
-    text-decoration: none;
-}
