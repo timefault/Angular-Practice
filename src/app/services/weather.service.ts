@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { API_KEYS } from '../../../api_keys';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class WeatherService {
   );
   // geo data
   // api key
-  API_KEY = 'bf4d44fa559cfb3b741788bdce242c8d';
+  API_KEY = API_KEYS.weather;
+
   // units
   units = 'imperial';
   constructor(public httpClient: HttpClient) { }

@@ -25,6 +25,7 @@ import { PostComponent } from './components/post/post.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'jokepage', component: JokePageComponent },
