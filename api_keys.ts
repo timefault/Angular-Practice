@@ -1,4 +1,4 @@
 export var API_KEYS = {
-    'weather': 'bf4d44fa559cfb3b741788bdce242c8d'
+    'open_weather': 'd36f998ca4bc4d507c6becb0f028f9b0',
+    'tomorrow_io': '8pZZNLDBwQoJDVIkn97xeWBeGY5cz2rz'
 };
-// module.exports = API_KEYS;

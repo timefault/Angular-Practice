@@ -2,8 +2,14 @@
     <mat-drawer #drawer class="drawer">
         <div class="drawer-flex">
             <label for="">zip code</label>
+            <input type="text" [(ngModel)]="zipcode">
+            <button (click)="handleSubmit()">search</button>
             <label for="">favorites</label>
-            <label for="">forecast</label>
+            <ul>
+                <li>City A</li>
+                <li>City B</li>
+                <li>City C</li>
+            </ul>
         </div>
     </mat-drawer>
     <mat-drawer-content>

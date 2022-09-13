@@ -4,6 +4,7 @@ import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import XYZ from 'ol/source/XYZ';
 import { fromLonLat } from 'ol/proj';
+import { API_KEYS } from '../../../../api_keys';
 
 @Component({
   selector: 'app-map',
@@ -14,8 +15,7 @@ export class MapComponent implements OnInit {
 
   map?: Map;
   constructor() { }
-  // API_KEY = 'bf4d44fa559cfb3b741788bdce242c8d';
-  API_KEY = '8pZZNLDBwQoJDVIkn97xeWBeGY5cz2rz'
+  API_KEY = API_KEYS.tomorrow_io;
   TIMESTAMP = (new Date()).toISOString();
   DATA_FIELD = 'precipitationIntensity';
 
