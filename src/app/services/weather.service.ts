@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { API_KEYS } from '../../../api_keys';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -24,6 +25,30 @@ export class WeatherService {
   // units
   units = 'imperial';
 
+  _favoriteCities = new BehaviorSubject<any[]>([]);
+  favoriteCities$: Observable<any[]> = this._favoriteCities.asObservable();
+  favoriteCities: any[] = [];
+
+  getFavoriteCities() {
+    return this.favoriteCities$;
+  }
+  // if city is found, add to favorites array
+  addCityToFavorites(id: number, name: string) {
+    //check if city exists, add if not
+    if (!this.favoriteCities.some(el => el.id == id)) {
+      let city = {
+        id,
+        name
+      };
+      this.favoriteCities.push(city);
+      this._favoriteCities.next(this.favoriteCities);
+    }
+    else
+      console.log("[!] Debug: city exists");
+    console.log("============");
+    this.favoriteCities.forEach(a => console.log(`${a.id} ${a.name}`));
+  }
+
 
   constructor(public httpClient: HttpClient) { }
 
@@ -35,6 +60,9 @@ export class WeatherService {
       .set('units', 'imperial')
       .set('appid', this.API_KEY);
     return this.httpClient.get(this.REST_API, { params });
+    // should a service autonomously change its state
+    // , or should this action be requested from the component?
+    //      + from the component, this action can be called from a non-error state
   }
 
 

@@ -15,10 +15,13 @@ import { WeatherService } from 'src/app/services/weather.service';
 export class WeatherPageComponent implements OnInit {
 
   weatherData$?: Observable<any>;
+  // weatherData: any;
   lat = 33.52668453600432;
   lon = -81.83561253589173;
   zipcode: number = 0;
 
+  error: any;
+  favoriteCities: any[] = [];
 
   constructor(public weatherService: WeatherService) { }
 
@@ -27,6 +30,9 @@ export class WeatherPageComponent implements OnInit {
     this.getWeather();
     this.getCurrentLocation();
     console.log(`${this.lat}  ${this.lon}`);
+    this.weatherService.getFavoriteCities().subscribe(cities => {
+      this.favoriteCities = cities;
+    });
   }
 
 
@@ -53,7 +59,40 @@ export class WeatherPageComponent implements OnInit {
   }
 
   handleSubmit() {
+    let weatherDataObserver = {
+      next: (data: any) => {
+        this.error = undefined;
+        console.log(data);
+        this.weatherService.addCityToFavorites(data.sys.id, data.name);
+      },
+      error: (err: Error) => {
+        console.log(err);
+        this.error = err;
+      },
+      complete: () => { console.log("Done."); }
+    };
     this.weatherData$ = this.weatherService.getWeatherDataByZipCode(this.zipcode);
+    this.weatherData$?.subscribe(weatherDataObserver);
   }
 
+  // if city is found, add to favorites array
+  addCityToFavorites(id: number, name: string) {
+    //check if city exists, add if not
+    if (!this.favoriteCities.some(el => el.id == id)) {
+      let city = {
+        id,
+        name
+      };
+      this.favoriteCities.push(city);
+    }
+    else
+      console.log("[!] Debug: city exists");
+    console.log("============");
+    this.favoriteCities.forEach(a => console.log(`${a.id} ${a.name}`));
+  }
+
+
+  handleFavoriteCityClick(city: any) {
+    console.log(`clicked and got ${city} `)
+  }
 }

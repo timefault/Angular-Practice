@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class JokeService {
+  // TODO:
+  //    - add sticky settings
 
   REST_API = 'https://v2.jokeapi.dev/joke/'; //Programming?format=json'
   HEADERS = new HttpHeaders().set(  // not used

@@ -1,14 +1,14 @@
 <mat-drawer-container class="drawer-container">
     <mat-drawer #drawer class="drawer">
         <div class="drawer-flex">
-            <label for="">zip code</label>
+            <label for="">Zip Code</label>
             <input type="text" [(ngModel)]="zipcode">
+            <label for="" class="label-error" *ngIf="error">
+                * {{error.error.message}}</label>
             <button (click)="handleSubmit()">search</button>
-            <label for="">favorites</label>
-            <ul>
-                <li>City A</li>
-                <li>City B</li>
-                <li>City C</li>
+            <label for="">Favorites</label>
+            <ul *ngIf="favoriteCities.length">
+                <li *ngFor="let city of favoriteCities" (click)="handleFavoriteCityClick(city)">{{city.name}}</li>
             </ul>
         </div>
     </mat-drawer>

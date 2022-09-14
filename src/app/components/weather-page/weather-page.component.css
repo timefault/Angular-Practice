@@ -55,3 +55,8 @@ a {
 .drawer-flex>* {
     margin-left: 5px;
 }
+
+.label-error {
+    color: red;
+    font-style: italic;
+}

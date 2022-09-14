@@ -6,7 +6,7 @@ import { IAction } from '../classes/action.model';
   providedIn: 'root'
 })
 export class MainComponentService {
-  mainComponentMethods$?: Observable<IAction[]>;
+  // mainComponentMethods$?: Observable<IAction[]>;
 
   constructor() { }
   subject = new Subject<any>();
