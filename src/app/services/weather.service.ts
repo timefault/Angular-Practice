@@ -33,12 +33,13 @@ export class WeatherService {
     return this.favoriteCities$;
   }
   // if city is found, add to favorites array
-  addCityToFavorites(id: number, name: string) {
+  addCityToFavorites(id: number/* not city id */, name: string, coord: any) {
     //check if city exists, add if not
     if (!this.favoriteCities.some(el => el.id == id)) {
       let city = {
         id,
-        name
+        name,
+        coord
       };
       this.favoriteCities.push(city);
       this._favoriteCities.next(this.favoriteCities);
@@ -66,7 +67,7 @@ export class WeatherService {
   }
 
 
-  getWeatherDataByZipCode(zipcode: number) {
+  getWeatherDataByZipCode(zipcode: number | string) {
     let params = new HttpParams()
       .set('zip', zipcode)
       .set('units', 'imperial')
@@ -74,5 +75,13 @@ export class WeatherService {
     return this.httpClient.get(this.REST_API, { params });
   }
 
+
+  getWeatherDataByCityId(id: number) {
+    let params = new HttpParams()
+      .set('id', id)
+      .set('units', 'imperial')
+      .set('appid', this.API_KEY);
+    return this.httpClient.get(this.REST_API, { params });
+  }
 
 }

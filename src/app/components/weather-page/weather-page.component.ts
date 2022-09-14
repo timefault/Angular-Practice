@@ -18,7 +18,7 @@ export class WeatherPageComponent implements OnInit {
   // weatherData: any;
   lat = 33.52668453600432;
   lon = -81.83561253589173;
-  zipcode: number = 0;
+  zipcode: number | string = '';
 
   error: any;
   favoriteCities: any[] = [];
@@ -63,7 +63,7 @@ export class WeatherPageComponent implements OnInit {
       next: (data: any) => {
         this.error = undefined;
         console.log(data);
-        this.weatherService.addCityToFavorites(data.sys.id, data.name);
+        this.weatherService.addCityToFavorites(data.sys.id, data.name, data.coord);
       },
       error: (err: Error) => {
         console.log(err);
@@ -94,5 +94,6 @@ export class WeatherPageComponent implements OnInit {
 
   handleFavoriteCityClick(city: any) {
     console.log(`clicked and got ${city} `)
+    this.weatherData$ = this.weatherService.getWeatherDataByCoord(city.coord.lat, city.coord.lon);
   }
 }

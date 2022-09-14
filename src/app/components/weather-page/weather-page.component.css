@@ -60,3 +60,8 @@ a {
     color: red;
     font-style: italic;
 }
+
+.favorite-city:hover {
+    cursor: pointer;
+    color: var(--clr-background-navbar);
+}

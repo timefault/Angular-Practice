@@ -12,6 +12,8 @@ import { API_KEYS } from '../../../../api_keys';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
+  //  TODO:
+  //    - add map service
 
   map?: Map;
   constructor() { }

@@ -2,13 +2,15 @@
     <mat-drawer #drawer class="drawer">
         <div class="drawer-flex">
             <label for="">Zip Code</label>
-            <input type="text" [(ngModel)]="zipcode">
+            <input type="text" [(ngModel)]="zipcode" (keydown.enter)="handleSubmit()">
             <label for="" class="label-error" *ngIf="error">
                 * {{error.error.message}}</label>
             <button (click)="handleSubmit()">search</button>
             <label for="">Favorites</label>
             <ul *ngIf="favoriteCities.length">
-                <li *ngFor="let city of favoriteCities" (click)="handleFavoriteCityClick(city)">{{city.name}}</li>
+                <li *ngFor="let city of favoriteCities" (click)="handleFavoriteCityClick(city)">
+                    <span class="favorite-city">{{city.name}}</span>
+                </li>
             </ul>
         </div>
     </mat-drawer>
