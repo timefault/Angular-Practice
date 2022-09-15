@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { WeatherService } from 'src/app/services/weather.service';
 
-
+/*
+TODO:
+      - refactor from the template an hourly weather component
+*/
 
 @Component({
 
@@ -37,7 +40,8 @@ export class WeatherPageComponent implements OnInit {
 
 
   getWeather(): void {
-    this.weatherData$ = this.weatherService.getWeatherDataByCoord(this.lat, this.lon);
+    // this.weatherData$ = this.weatherService.getWeatherDataByCoord(this.lat, this.lon);
+    this.weatherData$ = this.weatherService.get5Day3HourWeatherDataByCoord(this.lat, this.lon);
     this.weatherData$?.subscribe(data => {
       console.log(data);
     });
