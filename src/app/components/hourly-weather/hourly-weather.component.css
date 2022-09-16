@@ -1,0 +1,20 @@
+:host {
+    border: 1px yellow dashed;
+}
+
+.time {
+    font-weight: 100;
+    font-size: .75em;
+}
+
+.wind {
+    font-size: .75em;
+    width: 6.75em;
+
+}
+
+.temperature {
+
+    font-size: .75em;
+
+}

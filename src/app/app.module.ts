@@ -24,6 +24,7 @@ import { SliderComponent } from './components/slider/slider.component';
 import { PostComponent } from './components/post/post.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
+import { HourlyWeatherComponent } from './components/hourly-weather/hourly-weather.component';
 
 
 const routes: Routes = [
@@ -47,7 +48,8 @@ const routes: Routes = [
     SliderComponent,
     PostComponent,
     SidebarComponent,
-    MainContentComponent
+    MainContentComponent,
+    HourlyWeatherComponent
   ],
   imports: [
     BrowserModule,

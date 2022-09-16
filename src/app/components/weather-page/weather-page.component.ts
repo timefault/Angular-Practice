@@ -17,7 +17,8 @@ TODO:
 
 export class WeatherPageComponent implements OnInit {
 
-  weatherData$?: Observable<any>;
+  forecastData$?: Observable<any>;
+  currentWeatherData$?: Observable<any>;
   // weatherData: any;
   lat = 33.52668453600432;
   lon = -81.83561253589173;
@@ -41,8 +42,8 @@ export class WeatherPageComponent implements OnInit {
 
   getWeather(): void {
     // this.weatherData$ = this.weatherService.getWeatherDataByCoord(this.lat, this.lon);
-    this.weatherData$ = this.weatherService.get5Day3HourWeatherDataByCoord(this.lat, this.lon);
-    this.weatherData$?.subscribe(data => {
+    this.forecastData$ = this.weatherService.get5Day3HourWeatherDataByCoord(this.lat, this.lon);
+    this.forecastData$?.subscribe(data => {
       console.log(data);
     });
   }
@@ -75,8 +76,8 @@ export class WeatherPageComponent implements OnInit {
       },
       complete: () => { console.log("Done."); }
     };
-    this.weatherData$ = this.weatherService.getWeatherDataByZipCode(this.zipcode);
-    this.weatherData$?.subscribe(weatherDataObserver);
+    this.forecastData$ = this.weatherService.getWeatherDataByZipCode(this.zipcode);
+    this.forecastData$?.subscribe(weatherDataObserver);
   }
 
   // if city is found, add to favorites array
@@ -98,6 +99,6 @@ export class WeatherPageComponent implements OnInit {
 
   handleFavoriteCityClick(city: any) {
     console.log(`clicked and got ${city} `)
-    this.weatherData$ = this.weatherService.getWeatherDataByCoord(city.coord.lat, city.coord.lon);
+    this.forecastData$ = this.weatherService.getWeatherDataByCoord(city.coord.lat, city.coord.lon);
   }
 }

@@ -91,6 +91,7 @@ export class WeatherService {
       .set('lat', lat)
       .set('lon', lon)
       .set('units', 'imperial')
+      .set('cnt', 17)
       .set('appid', this.API_KEY);
     return this.httpClient.get(this.REST_API_FORCAST, { params });
   }

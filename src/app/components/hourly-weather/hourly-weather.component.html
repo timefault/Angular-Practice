@@ -1,0 +1,4 @@
+<p class="time">{{weatherData.dt * 1000| date:"h aaa"}}</p>
+<img src="http://openweathermap.org/img/wn/{{weatherData.weather[0].icon}}.png" />
+<p class="wind">{{weatherData.wind.speed | number:'1.0-0'}} mph {{getWindDirection(weatherData.wind.deg)}}</p>
+<p class="temperature">{{weatherData.main.temp | number:'1.0-0'}}&deg; F</p>

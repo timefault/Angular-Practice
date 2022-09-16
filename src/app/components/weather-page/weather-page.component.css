@@ -71,7 +71,7 @@ a {
 
 .solar-events {
     width: 100%;
-    max-width: 1000px;
+    /* max-width: 1000px; */
     display: flex;
     justify-content: space-around;
 }
@@ -89,7 +89,7 @@ a {
 
 .current-conditions-container {
     width: 100%;
-    max-width: 1000px;
+    /* max-width: 1000px; */
     border: 2px white solid;
 }
 
