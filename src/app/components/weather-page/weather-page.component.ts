@@ -22,7 +22,7 @@ export class WeatherPageComponent implements OnInit {
   // weatherData: any;
   lat = 33.52668453600432;
   lon = -81.83561253589173;
-  zipcode: number | string = '';
+  // zipcode: number;
 
   error: any;
   favoriteCities: any[] = [];
@@ -63,12 +63,30 @@ export class WeatherPageComponent implements OnInit {
     }
   }
 
-  handleSubmit() {
+  handleSubmit(zipcode: string) {
+    let zipcodeInt = parseInt(zipcode);
+    console.log("++++++++++++++++" + zipcodeInt);
+    if (isNaN(zipcodeInt)) {
+      this.error = {
+        error: { message: "Please enter a valid zipcode" }
+      }
+      return;
+    }
+    let zipcodeObserver = {
+      next: (data: any) => {
+        this.forecastData$ = this.weatherService.get5Day3HourWeatherDataByCoord(data.lat, data.lon)
+        this.forecastData$.subscribe(weatherDataObserver);
+
+      },
+      error: (err: Error) => { this.error = err; },
+      complete: () => { "Successfully translated zipcode to coordinates." }
+    };
+
     let weatherDataObserver = {
       next: (data: any) => {
         this.error = undefined;
         console.log(data);
-        this.weatherService.addCityToFavorites(data.sys.id, data.name, data.coord);
+        this.weatherService.addCityToFavorites(data.city.id, data.city.name, data.city.coord);
       },
       error: (err: Error) => {
         console.log(err);
@@ -76,17 +94,20 @@ export class WeatherPageComponent implements OnInit {
       },
       complete: () => { console.log("Done."); }
     };
-    this.forecastData$ = this.weatherService.getWeatherDataByZipCode(this.zipcode);
-    this.forecastData$?.subscribe(weatherDataObserver);
-  }
+    this.weatherService.getCoordsFromZipCode(zipcodeInt)
+      .subscribe(zipcodeObserver)
+    // .subscribe(weatherDataObserver)
+  };
+
 
   // if city is found, add to favorites array
-  addCityToFavorites(id: number, name: string) {
+  addCityToFavorites(id: number, name: string, coord: any) {
     //check if city exists, add if not
     if (!this.favoriteCities.some(el => el.id == id)) {
       let city = {
         id,
-        name
+        name,
+        coord
       };
       this.favoriteCities.push(city);
     }
@@ -99,6 +120,6 @@ export class WeatherPageComponent implements OnInit {
 
   handleFavoriteCityClick(city: any) {
     console.log(`clicked and got ${city} `)
-    this.forecastData$ = this.weatherService.getWeatherDataByCoord(city.coord.lat, city.coord.lon);
+    this.forecastData$ = this.weatherService.get5Day3HourWeatherDataByCoord(city.coord.lat, city.coord.lon);
   }
 }

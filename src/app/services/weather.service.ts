@@ -15,6 +15,7 @@ export class WeatherService {
 
   REST_API_WEATHER = 'https://api.openweathermap.org/data/2.5/weather';
   REST_API_FORCAST = 'https://api.openweathermap.org/data/2.5/forecast';
+  REST_API_GEOCODE = 'http://api.openweathermap.org/geo/1.0/zip';
 
   headers = new HttpHeaders().set(
     'Content-Type',
@@ -94,5 +95,11 @@ export class WeatherService {
       .set('cnt', 17)
       .set('appid', this.API_KEY);
     return this.httpClient.get(this.REST_API_FORCAST, { params });
+  }
+  getCoordsFromZipCode(zip: number): any {
+    let params = new HttpParams()
+      .set('zip', zip)
+      .set('appid', this.API_KEY);
+    return this.httpClient.get(this.REST_API_GEOCODE, { params });
   }
 }
