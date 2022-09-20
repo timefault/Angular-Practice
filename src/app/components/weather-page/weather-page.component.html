@@ -23,12 +23,13 @@
             <h2>{{forecastData.city.sunset * 1000 | date}}</h2>
             <div class="current-conditions-container">
                 <div class="current-conditions">
-                    <div class="debug">
+                    <div>
                         <p>Now</p>
-                        <img class="debug"
-                            src="http://openweathermap.org/img/wn/{{forecastData.list[0].weather[0].icon}}@2x.png"
+                        <img src="http://openweathermap.org/img/wn/{{forecastData.list[0].weather[0].icon}}@2x.png"
                             alt="">
-                        <span>{{forecastData.list[0].weather[0].main}}</span>
+                        <p>{{forecastData.list[0].weather[0].main}}</p>
+                        <p class="wind">{{forecastData.list[0].wind.speed | number:'1.0-0'}} mph
+                            {{getWindDirection(forecastData.list[0].wind.deg)}}</p>
                         <h2>{{forecastData.list[0].main.temp | number:'1.0-0'}}&deg; F</h2>
                     </div>
                     <app-hourly-weather *ngFor="let hourlyWeather of forecastData.list" [weatherData]="hourlyWeather">

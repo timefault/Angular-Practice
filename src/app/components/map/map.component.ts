@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import XYZ from 'ol/source/XYZ';
 import { fromLonLat } from 'ol/proj';
 import { API_KEYS } from '../../../../api_keys';
+import { WeatherService } from 'src/app/services/weather.service';
 
 @Component({
   selector: 'app-map',
@@ -16,7 +17,7 @@ export class MapComponent implements OnInit {
   //    - add map service
 
   map?: Map;
-  constructor() { }
+  constructor(private weatherService: WeatherService) { }
   API_KEY = API_KEYS.tomorrow_io;
   TIMESTAMP = (new Date()).toISOString();
   DATA_FIELD = 'precipitationIntensity';
@@ -31,9 +32,14 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initMap();
+    this.weatherService.getCurrentCoords().subscribe(
+      coords => {
+        this.initMap(coords);
+
+      }
+    );
   }
-  initMap() {
+  initMap(coords: number[]) {
     this.map =
       new Map({
         target: 'map',
@@ -54,7 +60,8 @@ export class MapComponent implements OnInit {
           // center: [0, 0],
           center:
 
-            fromLonLat([-81.83672833499388, 33.5282228671408])
+            // fromLonLat([-81.83672833499388, 33.5282228671408])
+            fromLonLat(coords)
           ,
           zoom: 7
         })

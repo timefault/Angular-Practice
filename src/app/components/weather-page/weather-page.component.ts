@@ -4,7 +4,9 @@ import { WeatherService } from 'src/app/services/weather.service';
 
 /*
 TODO:
-      - refactor from the template an hourly weather component
+        - cache data, use for favorites list
+        - restructure template to make weatherData$ component global
+        
 */
 
 @Component({
@@ -26,6 +28,8 @@ export class WeatherPageComponent implements OnInit {
 
   error: any;
   favoriteCities: any[] = [];
+
+  compassSector = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW", "N"];
 
   constructor(public weatherService: WeatherService) { }
 
@@ -121,5 +125,10 @@ export class WeatherPageComponent implements OnInit {
   handleFavoriteCityClick(city: any) {
     console.log(`clicked and got ${city} `)
     this.forecastData$ = this.weatherService.get5Day3HourWeatherDataByCoord(city.coord.lat, city.coord.lon);
+  }
+
+  getWindDirection(angle: number) {
+    let index = Math.floor(angle / 22.5);
+    return this.compassSector[index];
   }
 }

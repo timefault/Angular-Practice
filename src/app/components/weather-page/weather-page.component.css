@@ -92,7 +92,7 @@ a {
 
 .debug {
 
-    /* border: 1px pink solid; */
+    border: 1px pink solid;
 }
 
 .current-conditions-container {
@@ -154,4 +154,11 @@ a {
 
 .button-options:hover {
     color: orange;
+}
+
+.wind {
+    /* font-weight: 100; */
+    font-size: .9em;
+    color: #CCC;
+    /* width: 6.75em; */
 }

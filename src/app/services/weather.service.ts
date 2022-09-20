@@ -31,6 +31,14 @@ export class WeatherService {
   favoriteCities$: Observable<any[]> = this._favoriteCities.asObservable();
   favoriteCities: any[] = [];
 
+  // currentCoords = { lat: , lon:}
+  _currentCoords = new BehaviorSubject<any>({});
+  currentCoords$: Observable<any> = this._currentCoords.asObservable();
+  currentCoords = {
+    lat: 33.5282228671408,
+    lon: -81.83672833499388
+  };
+
   getFavoriteCities() {
     return this.favoriteCities$;
   }
@@ -88,6 +96,7 @@ export class WeatherService {
 
 
   get5Day3HourWeatherDataByCoord(lat: number, lon: number) {
+    this.saveCurrentCoords(lat, lon);
     let params = new HttpParams()
       .set('lat', lat)
       .set('lon', lon)
@@ -101,5 +110,15 @@ export class WeatherService {
       .set('zip', zip)
       .set('appid', this.API_KEY);
     return this.httpClient.get(this.REST_API_GEOCODE, { params });
+  }
+
+  saveCurrentCoords(lat: number, lon: number) {
+    this.currentCoords.lat = lat;
+    this.currentCoords.lon = lon;
+    this._currentCoords.next([this.currentCoords.lon, this.currentCoords.lat]);
+
+  }
+  getCurrentCoords() {
+    return this.currentCoords$;
   }
 }
