@@ -32,8 +32,8 @@ export class WeatherService {
   favoriteCities: any[] = [];
 
   // currentCoords = { lat: , lon:}
-  _currentCoords = new BehaviorSubject<any>({});
-  currentCoords$: Observable<any> = this._currentCoords.asObservable();
+  _currentCoords = new BehaviorSubject<number[]>([]);
+  currentCoords$: Observable<number[]> = this._currentCoords.asObservable();
   currentCoords = {
     lat: 33.5282228671408,
     lon: -81.83672833499388
@@ -97,6 +97,8 @@ export class WeatherService {
 
   get5Day3HourWeatherDataByCoord(lat: number, lon: number) {
     this.saveCurrentCoords(lat, lon);
+    this._currentCoords.next([lon, lat]);
+    console.log(`===========\n coords lat: ${lat}  lon: ${lon}`);
     let params = new HttpParams()
       .set('lat', lat)
       .set('lon', lon)

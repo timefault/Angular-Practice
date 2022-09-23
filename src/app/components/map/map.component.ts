@@ -34,12 +34,16 @@ export class MapComponent implements OnInit {
   ngOnInit(): void {
     this.weatherService.getCurrentCoords().subscribe(
       coords => {
-        this.initMap(coords);
-
+        if (this.map)
+          this.map.getView().setCenter(fromLonLat(coords));
+        else
+          this.initMap(coords);
       }
     );
   }
   initMap(coords: number[]) {
+    console.log("[!] initialized map");
+    console.log("++++++coords" + coords);
     this.map =
       new Map({
         target: 'map',
@@ -51,16 +55,12 @@ export class MapComponent implements OnInit {
           }),
           new TileLayer({
             source: new XYZ({
-              // url: `https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=${this.API_KEY}`
               url: `https://api.tomorrow.io/v4/map/tile/{z}/{x}/{y}/${this.DATA_FIELD}/${this.TIMESTAMP}.png?apikey=${this.API_KEY}`
             })
           })
         ],
         view: new View({
-          // center: [0, 0],
           center:
-
-            // fromLonLat([-81.83672833499388, 33.5282228671408])
             fromLonLat(coords)
           ,
           zoom: 7

@@ -37,7 +37,7 @@ export class WeatherPageComponent implements OnInit {
   ngOnInit(): void {
     this.getWeather();
     this.getCurrentLocation();
-    console.log(`${this.lat}  ${this.lon}`);
+    // console.log(`${this.lat}  ${this.lon}`);
     this.weatherService.getFavoriteCities().subscribe(cities => {
       this.favoriteCities = cities;
     });
