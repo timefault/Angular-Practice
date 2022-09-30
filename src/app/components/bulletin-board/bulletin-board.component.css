@@ -18,3 +18,7 @@
     width: 200px;
     background-color: #333;
 }
+
+.button-options {
+    display: block;
+}

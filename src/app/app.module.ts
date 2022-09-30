@@ -12,8 +12,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
 
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 import { HomeComponent } from './components/home/home.component';
 import { JokePageComponent } from './components/joke-page/joke-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -25,6 +28,7 @@ import { PostComponent } from './components/post/post.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { HourlyWeatherComponent } from './components/hourly-weather/hourly-weather.component';
+import { NewQuestionComponent } from './components/new-question/new-question.component';
 
 
 const routes: Routes = [
@@ -49,7 +53,8 @@ const routes: Routes = [
     PostComponent,
     SidebarComponent,
     MainContentComponent,
-    HourlyWeatherComponent
+    HourlyWeatherComponent,
+    NewQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +65,9 @@ const routes: Routes = [
     MatSliderModule,
     MatSidenavModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

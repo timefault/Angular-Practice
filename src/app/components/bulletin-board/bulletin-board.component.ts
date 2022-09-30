@@ -43,4 +43,7 @@ export class BulletinBoardComponent implements OnInit {
   createNewThread() {
     return 'Started another thread';
   }
+  replyToPost() {
+    // show reply form
+  }
 }

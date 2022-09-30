@@ -2,7 +2,8 @@
     <mat-drawer class="drawer"></mat-drawer>
     <mat-drawer-content>
         <h1 class="page-title">Bulletin board</h1>
-        <button>options</button>
+        <button class="button-options">options</button>
+        <app-new-question></app-new-question>
         <div *ngIf="(posts$ | async) as posts; else Else" class="flex-container">
             <app-post *ngFor="let post of posts.data" [post]="post"></app-post>
         </div>

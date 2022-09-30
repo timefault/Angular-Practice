@@ -1,0 +1,19 @@
+.form-new-question {
+    width: 480px;
+    margin-left: 100px;
+}
+
+.input-new-question {}
+
+.button-new-question {
+    border: none;
+    padding: 10px;
+    font-size: .8em;
+    letter-spacing: 1px;
+    margin-left: 5px;
+}
+
+.button-new-question:hover {
+    background-color: black;
+    color: orange;
+}

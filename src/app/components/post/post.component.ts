@@ -8,10 +8,23 @@ import { IPost } from './post.model';
 })
 export class PostComponent implements OnInit {
   @Input() post!: IPost;
+  upVotes!: number;
+  downVotes!: number;
 
   constructor() { }
 
   ngOnInit(): void {
+    // initialize post
+    this.upVotes = 8;
+    this.downVotes = 0;
+  }
+
+  initializePost() { }
+  castUpVote() {
+    this.upVotes++;
+  }
+  castDownVote() {
+    this.downVotes++;
   }
 
 }

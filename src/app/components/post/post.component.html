@@ -1,11 +1,11 @@
 <mat-card class="card">
-    <mat-card-title>{{post.name}}</mat-card-title>
+    <mat-card-title>{{post.author}}</mat-card-title>
     <mat-card-content>{{post.message}}</mat-card-content>
     <mat-card-actions class="card-actions">
         <div>
-            <button>Upvote</button>
-            <label for=""># of Votes</label>
-            <button>Downvote</button>
+            <button (click)="castUpVote()">Upvote</button>
+            <label for="">{{upVotes - downVotes}}</label>
+            <button (click)="castDownVote()">Downvote</button>
         </div>
         <button>Reply</button>
     </mat-card-actions>
