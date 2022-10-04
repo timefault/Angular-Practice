@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { BulletinBoardService } from 'src/app/services/bulletin-board.service';
+import { IPost } from '../bulletin-board/bulletin-board.model';
 
 @Component({
   selector: 'app-new-question',
@@ -8,7 +11,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class NewQuestionComponent implements OnInit {
 
-  constructor() { }
+  @Output() pullPosts = new EventEmitter<any>();
+
+  constructor(private db: BulletinBoardService) { }
 
   ngOnInit(): void {
   }
@@ -17,8 +22,20 @@ export class NewQuestionComponent implements OnInit {
     author: new FormControl(''),
     message: new FormControl('')
   });
-  handleSubmitNewQuestion() {
+  onSubmit(newQuestion: any) {
+    // console.log(newQuestion);
     // console.log(this.newQuestionForm.get('author')!.value)
-    console.log(this.newQuestionForm.get('message')!.value)
+    // console.log(this.newQuestionForm.get('message')!.value)
+    // parse html form
+    // validate and sanitize form
+    // post to db new record
+    this.db.insertNewPost(newQuestion).subscribe(data => { console.log(data); });
+    // get db state
+    this.pullPosts.emit(this.db.getAllPosts()); // good or bad pattern? async a problem?
+    // clear textbox
+    this.newQuestionForm.setValue({
+      author: '',
+      message: ''
+    });
   }
 }

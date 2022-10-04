@@ -1,9 +1,9 @@
-<form [formGroup]="newQuestionForm">
+<form [formGroup]="newQuestionForm" (ngSubmit)="onSubmit(newQuestionForm.value)">
     <mat-form-field class="form-new-question">
         <mat-label for="" class="new-question-label">New question</mat-label>
         <!-- <input matInput type="text" placeholder="name" formControlName="author"> -->
         <input matInput maxlength="256" placeholder="Ask your question here" formControlName="message" id="" cols="30"
             rows="10" class="input-new-question">
     </mat-form-field>
-    <button mat-button (click)="handleSubmitNewQuestion()">submit</button>
+    <button mat-button type="submit">submit</button>
 </form>

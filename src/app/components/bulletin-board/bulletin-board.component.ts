@@ -1,6 +1,6 @@
 // considering making a stackoverflow type clone
 
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IAction } from 'src/app/classes/action.model';
 import { BulletinBoardService } from 'src/app/services/bulletin-board.service';
@@ -12,33 +12,25 @@ import { BulletinBoardService } from 'src/app/services/bulletin-board.service';
 })
 export class BulletinBoardComponent implements OnInit {
   // @Output() actionsChange = new EventEmitter<any>();
-  actions: any;
   posts$?: Observable<any>;
-  constructor(public bulletinBoardService: BulletinBoardService) {
 
-    this.actions = [
-      {
-        id: 0,
-        name: 'create',
-        method: this.createNewPost
-      },
-      {
-        id: 1,
-        name: 'newThread',
-        method: this.createNewThread
-      }
-    ];
+  constructor(public bulletinBoardService: BulletinBoardService) {
   }
 
+
   ngOnInit(): void {
-    this.getAllPosts();
+    this.posts$ = this.bulletinBoardService.getPosts();
+    this.bulletinBoardService.getAllPosts();
   }
 
   getAllPosts() {
-    this.posts$ = this.bulletinBoardService.getAllPosts();
+    this.posts$ = this.bulletinBoardService.getPosts();
   }
-  createNewPost() {
-    return 'Here is another post';
+  postNewQuestion() {
+    // parse html form
+    // validate and sanitze form
+    // post new record to db
+    // get db state
   }
   createNewThread() {
     return 'Started another thread';
