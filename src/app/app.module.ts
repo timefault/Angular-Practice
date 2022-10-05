@@ -29,6 +29,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { HourlyWeatherComponent } from './components/hourly-weather/hourly-weather.component';
 import { NewQuestionComponent } from './components/new-question/new-question.component';
+import { ReplyComponent } from './components/reply/reply.component';
 
 
 const routes: Routes = [
@@ -54,7 +55,8 @@ const routes: Routes = [
     SidebarComponent,
     MainContentComponent,
     HourlyWeatherComponent,
-    NewQuestionComponent
+    NewQuestionComponent,
+    ReplyComponent
   ],
   imports: [
     BrowserModule,

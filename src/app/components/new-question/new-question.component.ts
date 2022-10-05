@@ -31,7 +31,6 @@ export class NewQuestionComponent implements OnInit {
     // post to db new record
     this.db.insertNewPost(newQuestion).subscribe(data => { console.log(data); });
     // get db state
-    this.pullPosts.emit(this.db.getAllPosts()); // good or bad pattern? async a problem?
     // clear textbox
     this.newQuestionForm.setValue({
       author: '',

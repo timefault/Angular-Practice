@@ -2,11 +2,7 @@
     <mat-card-title>{{post.author}}</mat-card-title>
     <mat-card-content>{{post.message}}</mat-card-content>
     <mat-card-actions class="card-actions">
-        <div>
-            <button (click)="castUpVote()">Upvote</button>
-            <label for="">{{upVotes - downVotes}}</label>
-            <button (click)="castDownVote()">Downvote</button>
-        </div>
-        <button>Reply</button>
+        <app-reply *ngIf="isReplying" [(isReplying)]="isReplying"></app-reply>
+        <button class="button-reply" (click)="onReply()" *ngIf="!isReplying">Reply</button>
     </mat-card-actions>
 </mat-card>

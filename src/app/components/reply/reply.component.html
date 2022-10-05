@@ -1,0 +1,9 @@
+<form [formGroup]="replyForm" (ngSubmit)="onSubmitReply(replyForm.value)" class="form-reply">
+    <mat-form-field class="">
+        <mat-label for="user-reply" class="label-reply">Reply</mat-label>
+        <input matInput maxlength="256" placeholder="Your answer here ..." formControlName="message" id="" cols="30"
+            rows="10" class="input-reply">
+    </mat-form-field>
+    <button mat-button (click)="onCancelReply()">Cancel</button>
+    <button mat-button type="submit">Submit</button>
+</form>
