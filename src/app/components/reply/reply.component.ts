@@ -24,5 +24,7 @@ export class ReplyComponent implements OnInit {
     this.isReplyingChange.emit(this.isReplying);
     // clear reply textbox
   }
-  onSubmitReply(form: any) { }
+  onSubmitReply(form: any) {
+    console.log(form);
+  }
 }

@@ -10,6 +10,8 @@ export class PostComponent implements OnInit {
   @Input() post!: IPost;
   isReplying!: boolean;
 
+
+
   constructor() { }
 
   ngOnInit(): void {
