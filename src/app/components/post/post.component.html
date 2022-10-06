@@ -2,7 +2,8 @@
     <mat-card-title>{{post.author}}</mat-card-title>
     <mat-card-content>{{post.message}}</mat-card-content>
     <mat-card-actions class="card-actions">
-        <app-reply *ngIf="isReplying" [(isReplying)]="isReplying"></app-reply>
+        <app-reply *ngIf="isReplying" [(isReplying)]="isReplying">
+        </app-reply>
         <button class="button-reply" (click)="onReply()" *ngIf="!isReplying">Reply</button>
     </mat-card-actions>
 </mat-card>

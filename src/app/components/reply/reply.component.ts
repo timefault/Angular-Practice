@@ -1,4 +1,3 @@
-import { outputAst } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -9,7 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ReplyComponent implements OnInit {
   @Input() isReplying!: boolean;
-  @Output() IsReplyingChange = new EventEmitter<boolean>();
+  @Output() isReplyingChange = new EventEmitter<boolean>();
   constructor() { }
 
   ngOnInit(): void {
@@ -19,8 +18,10 @@ export class ReplyComponent implements OnInit {
   });
   onCancelReply() {
     // set app-post.isReplying to false
+    console.log("cancelled");
     this.isReplying = false;
-    this.IsReplyingChange.emit(this.isReplying);
+    console.log(this.isReplying);
+    this.isReplyingChange.emit(this.isReplying);
     // clear reply textbox
   }
   onSubmitReply(form: any) { }

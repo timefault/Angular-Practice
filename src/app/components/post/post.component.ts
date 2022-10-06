@@ -8,16 +8,21 @@ import { IPost } from './post.model';
 })
 export class PostComponent implements OnInit {
   @Input() post!: IPost;
-  isReplying: boolean = false;
+  isReplying!: boolean;
 
   constructor() { }
 
   ngOnInit(): void {
     // initialize post
+    this.isReplying = false;
   }
 
   initializePost() { }
   onReply() {
     this.isReplying = true;
+  }
+  checkValue(/*any: any*/) {
+    console.log('fire');
+    // console.log(any);
   }
 }
