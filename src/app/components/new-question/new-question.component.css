@@ -1,10 +1,7 @@
-.form-new-question {
-    width: 480px;
-    margin-left: 100px;
-}
-
-.input-new-question {}
-
+/* mat-form-field {
+    margin-inline-start: 100px;
+    width: 80%;
+} */
 .button-new-question {
     border: none;
     padding: 10px;
@@ -16,4 +13,20 @@
 .button-new-question:hover {
     background-color: black;
     color: orange;
+}
+
+mat-form-field {
+    /* display: inline-block; */
+    /* margin-inline: 20%; */
+    width: calc(100% - 76px);
+}
+
+form {
+    width: 800px;
+    margin-inline: auto;
+}
+
+.form-field-wrapper {
+    width: 100%;
+    /* margin-left: 100px; */
 }

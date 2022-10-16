@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BulletinBoardService } from 'src/app/services/bulletin-board.service';
+import { IReply } from '../reply/reply.model';
 import { IPost } from './post.model';
 
 @Component({
@@ -9,20 +12,22 @@ import { IPost } from './post.model';
 export class PostComponent implements OnInit {
   @Input() post!: IPost;
   isReplying!: boolean;
+  postId?: number;
+  replies$?: Observable<any>;
 
-
-
-  constructor() { }
+  constructor(private db: BulletinBoardService) { }
 
   ngOnInit(): void {
     // initialize post
     this.isReplying = false;
+    this.postId = this.post.id;
+    this.replies$ = this.db.getRepliesById(this.postId);
   }
 
-  initializePost() { }
   onReply() {
     this.isReplying = true;
   }
+
   checkValue(/*any: any*/) {
     console.log('fire');
     // console.log(any);

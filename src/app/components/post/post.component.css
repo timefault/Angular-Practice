@@ -17,4 +17,20 @@
 .button-reply {
     margin-left: auto;
     margin-right: 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    outline: none;
+    background-color: transparent;
+    padding: 1em;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.button-reply:hover {
+    background-color: #EEE;
+}
+
+app-reply {
+    /* width: 80%; */
 }

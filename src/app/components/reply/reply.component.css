@@ -1,3 +1,16 @@
+:host {
+    width: 100%;
+}
+
 .form-reply {
+    width: 100%;
+}
+
+.action {
+    display: block;
+    margin-block: 0;
+}
+
+mat-form-field {
     width: 100%;
 }

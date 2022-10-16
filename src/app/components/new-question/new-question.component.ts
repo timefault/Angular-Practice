@@ -29,7 +29,7 @@ export class NewQuestionComponent implements OnInit {
     // parse html form
     // validate and sanitize form
     // post to db new record
-    this.db.insertNewPost(newQuestion).subscribe(data => { console.log(data); });
+    this.db.insertNewRecord(newQuestion, 'post');
     // get db state
     // clear textbox
     this.newQuestionForm.setValue({

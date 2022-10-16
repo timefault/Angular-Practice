@@ -1,20 +1,17 @@
 <mat-card class="card">
-    <mat-card-title>{{post.author}}</mat-card-title>
-    <mat-card-content>{{post.message}}</mat-card-content>
+    <mat-card-title>{{post.message}}</mat-card-title>
+    <mat-card-content>
+        <div *ngIf="(replies$ | async) as replies">
+            <p *ngFor="let reply of replies.data">
+                {{reply.message}}
+            </p>
+        </div>
+    </mat-card-content>
     <mat-card-actions class="card-actions">
-        <app-reply *ngIf="isReplying" [(isReplying)]="isReplying">
+        <app-reply *ngIf="isReplying" [(isReplying)]="isReplying" [postId]="postId">
         </app-reply>
-        <button class="button-reply" (click)="onReply()" *ngIf="!isReplying">Reply</button>
+        <button class="button-reply" (click)="onReply()" *ngIf="!isReplying">reply</button>
     </mat-card-actions>
     <mat-card-content>
-        <mat-card>
-            <mat-card-content>A reply</mat-card-content>
-        </mat-card>
-        <mat-card>
-            <mat-card-content>A reply</mat-card-content>
-        </mat-card>
-        <mat-card>
-            <mat-card-content>A reply</mat-card-content>
-        </mat-card>
     </mat-card-content>
 </mat-card>
