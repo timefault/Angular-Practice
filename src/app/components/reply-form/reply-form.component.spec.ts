@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReplyComponent } from './reply.component';
+import { ReplyFormComponent } from './reply-form.component';
 
 describe('ReplyComponent', () => {
-  let component: ReplyComponent;
-  let fixture: ComponentFixture<ReplyComponent>;
+  let component: ReplyFormComponent;
+  let fixture: ComponentFixture<ReplyFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReplyComponent ]
+      declarations: [ReplyFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
-    fixture = TestBed.createComponent(ReplyComponent);
+    fixture = TestBed.createComponent(ReplyFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

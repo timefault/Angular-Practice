@@ -8,8 +8,8 @@
         </div>
     </mat-card-content>
     <mat-card-actions class="card-actions">
-        <app-reply *ngIf="isReplying" [(isReplying)]="isReplying" [postId]="postId">
-        </app-reply>
+        <app-reply-form *ngIf="isReplying" [(isReplying)]="isReplying" [postId]="postId">
+        </app-reply-form>
         <button class="button-reply" (click)="onReply()" *ngIf="!isReplying">reply</button>
     </mat-card-actions>
     <mat-card-content>

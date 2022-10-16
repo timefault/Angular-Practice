@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BulletinBoardService } from 'src/app/services/bulletin-board.service';
-import { IReply } from '../reply/reply.model';
+import { IReply } from '../reply-form/reply-form.model';
 import { IPost } from './post.model';
 
 @Component({

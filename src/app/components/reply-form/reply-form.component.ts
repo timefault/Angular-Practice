@@ -1,13 +1,18 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BulletinBoardService } from 'src/app/services/bulletin-board.service';
+/*
+*   - input needs santization before deployment
+*
+*
+**/
 
 @Component({
-  selector: 'app-reply',
-  templateUrl: './reply.component.html',
-  styleUrls: ['./reply.component.css']
+  selector: 'app-reply-form',
+  templateUrl: './reply-form.component.html',
+  styleUrls: ['./reply-form.component.css']
 })
-export class ReplyComponent implements OnInit {
+export class ReplyFormComponent implements OnInit {
   @Input() postId?: number;
   @Input() isReplying!: boolean;
   @Output() isReplyingChange = new EventEmitter<boolean>();
