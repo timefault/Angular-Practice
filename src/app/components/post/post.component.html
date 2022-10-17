@@ -1,9 +1,9 @@
 <mat-card class="card">
-    <mat-card-title>{{post.message}}</mat-card-title>
+    <mat-card-title>{{post.message | unescape}}</mat-card-title>
     <mat-card-content>
         <div *ngIf="(replies$ | async) as replies">
             <p *ngFor="let reply of replies.data">
-                {{reply.message}}
+                {{reply.message | unescape}}
             </p>
         </div>
     </mat-card-content>

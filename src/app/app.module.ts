@@ -31,6 +31,8 @@ import { HourlyWeatherComponent } from './components/hourly-weather/hourly-weath
 import { NewQuestionComponent } from './components/new-question/new-question.component';
 import { ReplyFormComponent } from './components/reply-form/reply-form.component';
 
+import { UnescapePipe } from './pipes/unescape-html.pipe';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -56,7 +58,8 @@ const routes: Routes = [
     MainContentComponent,
     HourlyWeatherComponent,
     NewQuestionComponent,
-    ReplyFormComponent
+    ReplyFormComponent,
+    UnescapePipe
   ],
   imports: [
     BrowserModule,
