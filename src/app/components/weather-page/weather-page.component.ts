@@ -22,7 +22,9 @@ export class WeatherPageComponent implements OnInit {
   forecastData$?: Observable<any>;
   currentWeatherData$?: Observable<any>;
   // weatherData: any;
+  // lat!: number;
   lat = 33.52668453600432;
+  // lon!: number;
   lon = -81.83561253589173;
   // zipcode: number;
 
@@ -35,8 +37,8 @@ export class WeatherPageComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getWeather();
     this.getCurrentLocation();
+    this.getWeather();
     // console.log(`${this.lat}  ${this.lon}`);
     this.weatherService.getFavoriteCities().subscribe(cities => {
       this.favoriteCities = cities;
@@ -58,6 +60,7 @@ export class WeatherPageComponent implements OnInit {
       navigator.permissions.query({ name: 'geolocation' }).then(result => {
         if (result.state === 'granted' || result.state === 'prompt') {
           navigator.geolocation.getCurrentPosition(position => {
+            console.log('setting current position');
             this.lat = position.coords.latitude;
             this.lon = position.coords.longitude;
             console.log(`${this.lat}  ${this.lon}`);

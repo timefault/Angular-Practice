@@ -39,6 +39,27 @@ export class WeatherService {
     lon: -81.83672833499388
   };
 
+  constructor(public httpClient: HttpClient) { }
+
+  getCurrentLocation() {
+    return new Promise((res, rej) => { this.setCurrentLocation(); res(this.currentCoords$) });  // <===============||| finish building guard
+  }
+  setCurrentLocation() {
+    // is promise the only way to return a value from a then
+    if ('geolocation' in navigator) {
+      navigator.permissions.query({ name: 'geolocation' }).then(result => {
+        if (result.state === 'granted' || result.state === 'prompt') {
+          navigator.geolocation.getCurrentPosition(position => {
+            console.log('setting current position');
+            this.currentCoords.lat = position.coords.latitude;
+            this.currentCoords.lon = position.coords.longitude;
+            console.log(`${this.currentCoords.lat}  ${this.currentCoords.lon}`);
+          });
+        }
+      });
+    }
+  }
+
   getFavoriteCities() {
     return this.favoriteCities$;
   }
@@ -59,10 +80,6 @@ export class WeatherService {
     console.log("============");
     this.favoriteCities.forEach(a => console.log(`${a.id} ${a.name}`));
   }
-
-
-  constructor(public httpClient: HttpClient) { }
-
 
   getWeatherDataByCoord(lat: number, lon: number): any {
     let params = new HttpParams()
