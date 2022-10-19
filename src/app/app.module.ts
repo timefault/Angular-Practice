@@ -32,12 +32,17 @@ import { NewQuestionComponent } from './components/new-question/new-question.com
 import { ReplyFormComponent } from './components/reply-form/reply-form.component';
 
 import { UnescapePipe } from './pipes/unescape-html.pipe';
+import { GetCurrentLocationGuard } from './guards/get-current-location.guard';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'jokepage', component: JokePageComponent },
-  { path: 'weatherpage', component: WeatherPageComponent },
+  {
+    path: 'weatherpage', component: WeatherPageComponent, resolve: {
+      currentLocation: GetCurrentLocationGuard
+    }
+  },
   { path: 'bulletinboard', component: BulletinBoardComponent }
 
 ];
@@ -75,7 +80,7 @@ const routes: Routes = [
     MatButtonModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [GetCurrentLocationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

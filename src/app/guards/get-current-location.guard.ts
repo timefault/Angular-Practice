@@ -9,6 +9,9 @@ import { WeatherService } from '../services/weather.service';
 export class GetCurrentLocationGuard implements Resolve<any>{
   constructor(private weatherService: WeatherService) { }
   resolve() {
-    return this.weatherService.getCurrentLocation();
+    return new Promise((res, rej) => {
+
+      this.weatherService.getCurrentLocation(res);
+    })
   }
 }

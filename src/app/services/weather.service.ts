@@ -34,27 +34,29 @@ export class WeatherService {
   // currentCoords = { lat: , lon:}
   _currentCoords = new BehaviorSubject<number[]>([]);
   currentCoords$: Observable<number[]> = this._currentCoords.asObservable();
-  currentCoords = {
-    lat: 33.5282228671408,
-    lon: -81.83672833499388
-  };
+  currentCoords!: { lat: number, lon: number };
+  // currentCoords = {
+  //   lat: 33.5282228671408,
+  //   lon: -81.83672833499388
+  // };
 
-  constructor(public httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  getCurrentLocation() {
-    return new Promise((res, rej) => { this.setCurrentLocation(); res(this.currentCoords$) });  // <===============||| finish building guard
-  }
-  setCurrentLocation() {
+  getCurrentLocation(cb: any): { lat: number, lon: number } | void {
     // is promise the only way to return a value from a then
     if ('geolocation' in navigator) {
       navigator.permissions.query({ name: 'geolocation' }).then(result => {
         if (result.state === 'granted' || result.state === 'prompt') {
-          navigator.geolocation.getCurrentPosition(position => {
-            console.log('setting current position');
-            this.currentCoords.lat = position.coords.latitude;
-            this.currentCoords.lon = position.coords.longitude;
-            console.log(`${this.currentCoords.lat}  ${this.currentCoords.lon}`);
-          });
+          return navigator.geolocation.getCurrentPosition(position => {
+            let coords: { lat: number, lon: number } =
+            {
+              lat: position.coords.latitude,
+              lon: position.coords.longitude
+            }
+            // console.log(coords);
+            cb(coords);
+          }
+          );
         }
       });
     }
@@ -132,9 +134,11 @@ export class WeatherService {
   }
 
   saveCurrentCoords(lat: number, lon: number) {
-    this.currentCoords.lat = lat;
-    this.currentCoords.lon = lon;
-    this._currentCoords.next([this.currentCoords.lon, this.currentCoords.lat]);
+    this.currentCoords = {
+      lat: lat,
+      lon: lon
+    }
+    this._currentCoords.next([lon, lat]);
 
   }
   getCurrentCoords() {

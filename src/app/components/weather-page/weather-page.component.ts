@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { WeatherService } from 'src/app/services/weather.service';
 
@@ -22,10 +23,9 @@ export class WeatherPageComponent implements OnInit {
   forecastData$?: Observable<any>;
   currentWeatherData$?: Observable<any>;
   // weatherData: any;
-  // lat!: number;
-  lat = 33.52668453600432;
-  // lon!: number;
-  lon = -81.83561253589173;
+  currentPosition!: { lat: number, lon: number };
+  lat!: number;
+  lon!: number;
   // zipcode: number;
 
   error: any;
@@ -33,11 +33,16 @@ export class WeatherPageComponent implements OnInit {
 
   compassSector = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW", "N"];
 
-  constructor(public weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService, private activatedRoute: ActivatedRoute) { }
 
 
   ngOnInit(): void {
-    this.getCurrentLocation();
+    // this.lat = 33.52668453600432;
+    // this.lon = -81.83561253589173;
+    this.currentPosition = this.activatedRoute.snapshot.data['currentLocation'];
+    console.log(this.currentPosition);
+    // get current coordinates from service
+
     this.getWeather();
     // console.log(`${this.lat}  ${this.lon}`);
     this.weatherService.getFavoriteCities().subscribe(cities => {
@@ -48,27 +53,27 @@ export class WeatherPageComponent implements OnInit {
 
   getWeather(): void {
     // this.weatherData$ = this.weatherService.getWeatherDataByCoord(this.lat, this.lon);
-    this.forecastData$ = this.weatherService.get5Day3HourWeatherDataByCoord(this.lat, this.lon);
+    this.forecastData$ = this.weatherService.get5Day3HourWeatherDataByCoord(this.currentPosition.lat, this.currentPosition.lon);
     this.forecastData$?.subscribe(data => {
       console.log(data);
     });
   }
 
 
-  getCurrentLocation() {
-    if ('geolocation' in navigator) {
-      navigator.permissions.query({ name: 'geolocation' }).then(result => {
-        if (result.state === 'granted' || result.state === 'prompt') {
-          navigator.geolocation.getCurrentPosition(position => {
-            console.log('setting current position');
-            this.lat = position.coords.latitude;
-            this.lon = position.coords.longitude;
-            console.log(`${this.lat}  ${this.lon}`);
-          });
-        }
-      });
-    }
-  }
+  // getCurrentLocation() {
+  //   if ('geolocation' in navigator) {
+  //     navigator.permissions.query({ name: 'geolocation' }).then(result => {
+  //       if (result.state === 'granted' || result.state === 'prompt') {
+  //         navigator.geolocation.getCurrentPosition(position => {
+  //           console.log('setting current position');
+  //           this.lat = position.coords.latitude;
+  //           this.lon = position.coords.longitude;
+  //           console.log(`${this.lat}  ${this.lon}`);
+  //         });
+  //       }
+  //     });
+  //   }
+  // }
 
   handleSubmit(zipcode: string) {
     let zipcodeInt = parseInt(zipcode);
