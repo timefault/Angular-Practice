@@ -44,12 +44,36 @@ li {
     display: flex;
 }
 
+.hamburger {
+    display: none;
+}
+
 @media screen and (max-width: 480px) {
     :host {
-        display: none;
+        /* display: none; */
     }
 
     .navigation-primary {
-        flex-direction: column;
+        /* flex-direction: column; */
+    }
+
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+        content: '';
+        display: block;
+        background-color: black;
+        height: 3px;
+        width: 1.75em;
+        border-radius: 3px;
+        transition: all ease-in-out 100ms;
+    }
+
+    .hamburger::before {
+        transform: translateY(-6px);
+    }
+
+    .hamburger::after {
+        transform: translateY(3px);
     }
 }

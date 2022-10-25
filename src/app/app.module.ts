@@ -13,6 +13,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -33,6 +36,7 @@ import { ReplyFormComponent } from './components/reply-form/reply-form.component
 
 import { UnescapePipe } from './pipes/unescape-html.pipe';
 import { GetCurrentLocationGuard } from './guards/get-current-location.guard';
+import { NavToolbarComponent } from './components/nav-toolbar/nav-toolbar.component';
 
 
 const routes: Routes = [
@@ -64,7 +68,8 @@ const routes: Routes = [
     HourlyWeatherComponent,
     NewQuestionComponent,
     ReplyFormComponent,
-    UnescapePipe
+    UnescapePipe,
+    NavToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -78,6 +83,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatDividerModule,
     RouterModule.forRoot(routes)
   ],
   providers: [GetCurrentLocationGuard],

@@ -43,7 +43,6 @@ export class WeatherService {
   constructor(private httpClient: HttpClient) { }
 
   getCurrentLocation(cb: any): { lat: number, lon: number } | void {
-    // is promise the only way to return a value from a then
     if ('geolocation' in navigator) {
       navigator.permissions.query({ name: 'geolocation' }).then(result => {
         if (result.state === 'granted' || result.state === 'prompt') {
@@ -53,7 +52,6 @@ export class WeatherService {
               lat: position.coords.latitude,
               lon: position.coords.longitude
             }
-            // console.log(coords);
             cb(coords);
           }
           );

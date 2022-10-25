@@ -1,11 +1,17 @@
-<header class="page-header">
-    <h1 class="logo">App</h1>
-    <nav>
-        <ul class="navigation-primary">
-            <li><a routerLink="">Home</a></li>
-            <li><a routerLink="jokepage">Jokes</a></li>
-            <li><a routerLink="weatherpage">Weather</a></li>
-            <li><a routerLink="bulletinboard">Bulletin board</a></li>
-        </ul>
-    </nav>
-</header>
+<mat-drawer-container>
+    <mat-drawer #drawer></mat-drawer>
+    <mat-drawer-content>
+        <header class="page-header">
+            <h1 class="logo">App</h1>
+            <nav>
+                <ul class="navigation-primary">
+                    <li><a routerLink="">Home</a></li>
+                    <li><a routerLink="jokepage">Jokes</a></li>
+                    <li><a routerLink="weatherpage">Weather</a></li>
+                    <li><a routerLink="bulletinboard">Bulletin board</a></li>
+                </ul>
+                <div class="hamburger" (click)="drawer.toggle()"></div>
+            </nav>
+        </header>
+    </mat-drawer-content>
+</mat-drawer-container>
