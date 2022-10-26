@@ -10,7 +10,7 @@ export class JokePageComponent implements OnInit {
 
   fromJokePage = "this comes from jokepage";
 
-  jokeCount: number = 3;
+  jokeCount: number = 2;
   constructor() {
   }
 

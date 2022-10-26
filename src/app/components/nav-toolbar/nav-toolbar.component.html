@@ -13,7 +13,7 @@
 
         <button mat-button class="menu-button">
             <mat-icon>home</mat-icon>
-            <span>Home</span>
+            <a routerLink="">Home</a>
         </button>
 
         <button mat-button class="menu-button">
@@ -25,23 +25,23 @@
 
         <button mat-button class="menu-button">
             <mat-icon>sentiment_very_satisfied</mat-icon>
-            <span>Jokes</span>
+            <a routerLink="jokepage">Jokes</a>
         </button>
 
         <button mat-button class="menu-button">
             <mat-icon>cloudy</mat-icon>
-            <span>Weather</span>
+            <a routerLink="weatherpage">Weather</a>
         </button>
 
         <button mat-button class="menu-button">
             <mat-icon>assignment</mat-icon>
-            <span>Bulletin Board</span>
+            <a routerLink="bulletinboard">Bulletin board</a>
         </button>
 
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <div class="content mat-elevation-z8">Currently under construction!</div>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 
 </mat-sidenav-container>

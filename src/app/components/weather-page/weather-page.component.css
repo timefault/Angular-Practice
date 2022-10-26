@@ -28,16 +28,17 @@ a {
 } */
 
 .drawer-container {
-    top: 65px;
-    height: calc(100% - 65px);
+    /* top: 65px; */
+    /* height: calc(100% - 65px); */
     background-color: var(--clr-background-info);
+    height: 100%;
 }
 
 .drawer {
     color: white;
     position: fixed;
-    left: 0;
-    top: 60px;
+    /* left: 0; */
+    top: 65px;
     height: calc(100% - 65px);
     display: flex;
     flex-direction: column;

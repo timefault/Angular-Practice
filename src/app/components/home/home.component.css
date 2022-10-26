@@ -1,13 +1,15 @@
+.main-content {
+    height: 100%;
+    overflow: auto;
+    background-color: #111;
+}
+
 .content p {
     font-size: 1.2em;
     max-width: 1000px;
     background-color: hsl(112, 29%, 37%);
     padding: 1em;
-    margin: 0 auto;
-}
-
-main {
-    position: relative;
-    top: 65px;
-    height: calc(100% - 65px);
+    margin: .45em;
+    border-radius: 2px;
+    color: #001;
 }

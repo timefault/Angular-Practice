@@ -11,7 +11,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* overflow: hidden; */
 }
 
 html,
@@ -36,5 +35,10 @@ body {
     color: #DDD;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #000;
-    /* color: black; */
+}
+
+@media (max-width: 800px) {
+    .page-title {
+        padding: .15em;
+    }
 }

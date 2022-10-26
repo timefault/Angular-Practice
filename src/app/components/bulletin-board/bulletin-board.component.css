@@ -4,15 +4,15 @@
 
 .drawer-container {
     background-color: #ACA;
-    top: 65px;
-    height: calc(100% - 65px);
+    height: 100%;
+    overflow: auto;
 }
 
 .drawer {
     position: fixed;
-    left: 0;
-    top: 60px;
-    height: calc(100% - 65px);
+    /* left: 0; */
+    top: 65px;
+    /* height: calc(100% - 65px); */
     display: flex;
     justify-content: center;
     width: 200px;
@@ -21,4 +21,8 @@
 
 .button-options {
     display: block;
+}
+
+.main-content {
+    height: 100%;
 }
