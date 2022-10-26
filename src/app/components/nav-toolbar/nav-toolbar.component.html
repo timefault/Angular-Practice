@@ -1,20 +1,19 @@
 <mat-toolbar>
-    Responsive Side Navigation
+    <button mat-icon-button *ngIf="sideNav.mode === 'over'" (click)="sideNav.toggle()">
+        <mat-icon *ngIf="!sideNav.opened">menu</mat-icon>
+        <mat-icon *ngIf="sideNav.opened">close</mat-icon>
+    </button>
+    Angular App
 </mat-toolbar>
 
 <mat-sidenav-container>
 
-    <mat-sidenav opened mode="side" class="mat-elevation-z8">
+    <mat-sidenav opened mode="side" class="mat-elevation-z8" #sideNav="matSidenav">
         <!-- <mat-sidenav opened class="mat-elevation-z8"> -->
 
         <button mat-button class="menu-button">
             <mat-icon>home</mat-icon>
             <span>Home</span>
-        </button>
-
-        <button mat-button class="menu-button">
-            <mat-icon>person</mat-icon>
-            <span>Profile</span>
         </button>
 
         <button mat-button class="menu-button">
@@ -25,8 +24,18 @@
         <mat-divider></mat-divider>
 
         <button mat-button class="menu-button">
-            <mat-icon>help</mat-icon>
-            <span>Help</span>
+            <mat-icon>sentiment_very_satisfied</mat-icon>
+            <span>Jokes</span>
+        </button>
+
+        <button mat-button class="menu-button">
+            <mat-icon>cloudy</mat-icon>
+            <span>Weather</span>
+        </button>
+
+        <button mat-button class="menu-button">
+            <mat-icon>assignment</mat-icon>
+            <span>Bulletin Board</span>
         </button>
 
     </mat-sidenav>
