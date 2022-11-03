@@ -23,21 +23,12 @@ export class JokeComponent implements OnInit {
   constructor(public jokeService: JokeService) {
   }
 
-  // trackByFn(item: Object) { return item; }
-
   getJoke(): void {
     this.joke$ = this.jokeService.getJoke(this.categories);
-  }
-
-  getJokes(): void {
-    this.jokes$ = this.jokeService.getJokes();
-    console.log("=========\n" + this.jokes$);
   }
 
   ngOnInit(): void {
     this.getJoke();
   }
-
-
 
 }

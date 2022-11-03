@@ -2,9 +2,9 @@
     <mat-card-title>{{post.message | unescape}}</mat-card-title>
     <mat-card-content>
         <div *ngIf="(replies$ | async) as replies">
-            <p *ngFor="let reply of replies.data">
-                {{reply.message | unescape}}
-            </p>
+            <div *ngFor="let reply of replies.data" class="reply">
+                <span class="reply-content">{{reply.message | unescape}}</span>
+            </div>
         </div>
     </mat-card-content>
     <mat-card-actions class="card-actions">

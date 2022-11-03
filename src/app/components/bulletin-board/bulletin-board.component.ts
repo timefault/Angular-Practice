@@ -2,7 +2,6 @@
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IAction } from 'src/app/classes/action.model';
 import { BulletinBoardService } from 'src/app/services/bulletin-board.service';
 
 @Component({

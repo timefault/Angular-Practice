@@ -37,10 +37,12 @@ import { ReplyFormComponent } from './components/reply-form/reply-form.component
 import { UnescapePipe } from './pipes/unescape-html.pipe';
 import { GetCurrentLocationGuard } from './guards/get-current-location.guard';
 import { NavToolbarComponent } from './components/nav-toolbar/nav-toolbar.component';
+import { AboutPageComponent } from './components/about-page/about-page.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'aboutpage', component: AboutPageComponent },
   { path: 'jokepage', component: JokePageComponent },
   {
     path: 'weatherpage', component: WeatherPageComponent, resolve: {
@@ -69,7 +71,8 @@ const routes: Routes = [
     NewQuestionComponent,
     ReplyFormComponent,
     UnescapePipe,
-    NavToolbarComponent
+    NavToolbarComponent,
+    AboutPageComponent
   ],
   imports: [
     BrowserModule,

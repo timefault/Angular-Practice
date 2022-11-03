@@ -7,6 +7,7 @@ import { WeatherService } from 'src/app/services/weather.service';
 TODO:
         - cache data, use for favorites list
         - restructure template to make weatherData$ component global
+        - solar events show time for east coast time zone
         
 */
 
@@ -32,30 +33,13 @@ export class WeatherPageComponent implements OnInit {
   compassSector = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW", "N"];
 
 
-  // weatherDataObserver = {
-  //   next: (data: any) => {
-  //     this.error = null;
-  //     console.log(data);
-  //     this.weatherService.addCityToFavorites(data.city.id, data.city.name, data.city.coord);
-  //   },
-  //   error: (err: Error) => {
-  //     console.log(err);
-  //     this.error = err;
-  //   },
-  //   complete: () => { console.log("Done."); }
-  // };
-
-
-
   constructor(private weatherService: WeatherService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.currentPosition = this.activatedRoute.snapshot.data['currentLocation'];
     console.log(this.currentPosition);
     this.currentWeatherData$ = this.weatherService.getCurrentWeatherData();
-    this.getWeather();  // when the view subscribes the request is made and the observables resolves
-    // keep seperation of concerns
-    // this.currentWeatherData$?.subscribe(this.weatherDataObserver);
+    this.getWeather();
 
     this.weatherService.getFavoriteCities().subscribe(cities => {
       this.favoriteCities = cities;
@@ -64,10 +48,6 @@ export class WeatherPageComponent implements OnInit {
 
   getWeather(): void {
     this.weatherService.get5Day3HourWeatherDataByCoord(this.currentPosition.lat, this.currentPosition.lon);
-    // this.forecastData$?.subscribe(data => {
-    //   console.log(data);
-    //   this.currentWeatherData = data;
-    // });
   }
 
   handleSubmit(zipcode: string) {
@@ -79,19 +59,14 @@ export class WeatherPageComponent implements OnInit {
       }
       return;
     }
-    else this.weatherService.getWeatherDataByZipCode(zipcodeInt);
-    // let zipcodeObserver = {
-    //   next: (data: any) => {
-    //     this.currentWeatherData$?.subscribe(this.weatherDataObserver);
-
-    //   },
-    //   error: (err: Error) => { this.error = err; },
-    //   complete: () => { "Successfully translated zipcode to coordinates." }
-    // };
-
-    //   this.weatherService.getCoordsFromZipCode(zipcodeInt)
-    //     .subscribe(zipcodeObserver)
-  };
+    else {
+      this.weatherService.getCoordsFromZipCode(zipcodeInt).subscribe((data: any) => {
+        let lat = data.lat;
+        let lon = data.lon;
+        this.weatherService.get5Day3HourWeatherDataByCoord(lat, lon);
+      });
+    }
+  }
 
 
   // if city is found, add to favorites array

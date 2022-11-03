@@ -1,15 +1,14 @@
 .main-content {
     height: 100%;
-    overflow: auto;
-    background-color: #111;
+    background-color: hsl(120, 20%, 17%);
 }
 
 .content p {
     font-size: 1.2em;
     max-width: 1000px;
-    background-color: hsl(112, 29%, 37%);
+    background-color: hsl(120, 20%, 40%);
     padding: 1em;
     margin: .45em;
     border-radius: 2px;
-    color: #002;
+    color: #102;
 }

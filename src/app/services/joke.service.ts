@@ -10,7 +10,7 @@ export class JokeService {
   // TODO:
   //    - add sticky settings
 
-  REST_API = 'https://v2.jokeapi.dev/joke/'; //Programming?format=json'
+  REST_API = 'https://v2.jokeapi.dev/joke/';
   HEADERS = new HttpHeaders().set(  // not used
     'Content-Type',
     'application/json'
@@ -40,12 +40,4 @@ export class JokeService {
 
   }
 
-  getJokes() {
-    // returns observable
-    return forkJoin([
-      this.httpClient.get(this.REST_API),
-      this.httpClient.get(this.REST_API),
-      this.httpClient.get(this.REST_API),
-    ])
-  }
 }
