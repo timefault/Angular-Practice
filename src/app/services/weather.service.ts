@@ -27,18 +27,34 @@ export class WeatherService {
   // units
   units = 'imperial';
 
+  _currentWeatherData = new BehaviorSubject<any>(undefined);
+  currentWeatherData$: Observable<any> = this._currentWeatherData.asObservable();
+  currentWeatherData: any = {};
+
   _favoriteCities = new BehaviorSubject<any[]>([]);
   favoriteCities$: Observable<any[]> = this._favoriteCities.asObservable();
   favoriteCities: any[] = [];
 
-  // currentCoords = { lat: , lon:}
   _currentCoords = new BehaviorSubject<number[]>([]);
   currentCoords$: Observable<number[]> = this._currentCoords.asObservable();
   currentCoords!: { lat: number, lon: number };
-  // currentCoords = {
-  //   lat: 33.5282228671408,
-  //   lon: -81.83672833499388
-  // };
+
+
+
+  weatherDataObserver = {
+    next: (data: any) => {
+      this._currentWeatherData.next(data);
+      this.addCityToFavorites(data.city.id, data.city.name, data.city.coord);
+      console.log(data);
+    },
+    error: (err: Error) => {
+      console.log(err);
+      // this.error = err;
+    },
+    complete: () => { console.log("Done."); }
+  };
+
+
 
   constructor(private httpClient: HttpClient) { }
 
@@ -58,6 +74,10 @@ export class WeatherService {
         }
       });
     }
+  }
+
+  getCurrentWeatherData() {
+    return this.currentWeatherData$;
   }
 
   getFavoriteCities() {
@@ -99,7 +119,9 @@ export class WeatherService {
       .set('zip', zipcode)
       .set('units', 'imperial')
       .set('appid', this.API_KEY);
-    return this.httpClient.get(this.REST_API_WEATHER, { params });
+    this.httpClient.get(this.REST_API_WEATHER, { params }).subscribe(
+      this.weatherDataObserver
+    );
   }
 
 
@@ -114,7 +136,7 @@ export class WeatherService {
 
   get5Day3HourWeatherDataByCoord(lat: number, lon: number) {
     this.saveCurrentCoords(lat, lon);
-    this._currentCoords.next([lon, lat]);
+    // this._currentCoords.next([lon, lat]);
     console.log(`===========\n coords lat: ${lat}  lon: ${lon}`);
     let params = new HttpParams()
       .set('lat', lat)
@@ -122,8 +144,13 @@ export class WeatherService {
       .set('units', 'imperial')
       .set('cnt', 17)
       .set('appid', this.API_KEY);
-    return this.httpClient.get(this.REST_API_FORCAST, { params });
+
+    this.httpClient.get(this.REST_API_FORCAST, { params }).subscribe(
+      this.weatherDataObserver
+    );
   }
+
+
   getCoordsFromZipCode(zip: number): any {
     let params = new HttpParams()
       .set('zip', zip)

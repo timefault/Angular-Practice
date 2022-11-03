@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { BreakpointObserver } from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-nav-toolbar',
@@ -15,8 +15,11 @@ export class NavToolbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   ngAfterViewInit(): void {
-    this.observer.observe(['(max-width: 800px']).subscribe(res => {
+    this.sidenav.mode = "over";
+    this.sidenav.close();
+    this.observer.observe(['(max-width: 800px)']).subscribe(res => {
       if (res.matches) {
         this.sidenav.mode = "over";
         this.sidenav.close();

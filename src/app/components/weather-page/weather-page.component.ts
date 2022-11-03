@@ -22,58 +22,53 @@ export class WeatherPageComponent implements OnInit {
 
   forecastData$?: Observable<any>;
   currentWeatherData$?: Observable<any>;
-  // weatherData: any;
   currentPosition!: { lat: number, lon: number };
   lat!: number;
   lon!: number;
-  // zipcode: number;
 
   error: any;
   favoriteCities: any[] = [];
 
   compassSector = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW", "N"];
 
+
+  // weatherDataObserver = {
+  //   next: (data: any) => {
+  //     this.error = null;
+  //     console.log(data);
+  //     this.weatherService.addCityToFavorites(data.city.id, data.city.name, data.city.coord);
+  //   },
+  //   error: (err: Error) => {
+  //     console.log(err);
+  //     this.error = err;
+  //   },
+  //   complete: () => { console.log("Done."); }
+  // };
+
+
+
   constructor(private weatherService: WeatherService, private activatedRoute: ActivatedRoute) { }
 
-
   ngOnInit(): void {
-    // this.lat = 33.52668453600432;
-    // this.lon = -81.83561253589173;
     this.currentPosition = this.activatedRoute.snapshot.data['currentLocation'];
     console.log(this.currentPosition);
-    // get current coordinates from service
+    this.currentWeatherData$ = this.weatherService.getCurrentWeatherData();
+    this.getWeather();  // when the view subscribes the request is made and the observables resolves
+    // keep seperation of concerns
+    // this.currentWeatherData$?.subscribe(this.weatherDataObserver);
 
-    this.getWeather();
-    // console.log(`${this.lat}  ${this.lon}`);
     this.weatherService.getFavoriteCities().subscribe(cities => {
       this.favoriteCities = cities;
     });
   }
 
-
   getWeather(): void {
-    // this.weatherData$ = this.weatherService.getWeatherDataByCoord(this.lat, this.lon);
-    this.forecastData$ = this.weatherService.get5Day3HourWeatherDataByCoord(this.currentPosition.lat, this.currentPosition.lon);
-    this.forecastData$?.subscribe(data => {
-      console.log(data);
-    });
+    this.weatherService.get5Day3HourWeatherDataByCoord(this.currentPosition.lat, this.currentPosition.lon);
+    // this.forecastData$?.subscribe(data => {
+    //   console.log(data);
+    //   this.currentWeatherData = data;
+    // });
   }
-
-
-  // getCurrentLocation() {
-  //   if ('geolocation' in navigator) {
-  //     navigator.permissions.query({ name: 'geolocation' }).then(result => {
-  //       if (result.state === 'granted' || result.state === 'prompt') {
-  //         navigator.geolocation.getCurrentPosition(position => {
-  //           console.log('setting current position');
-  //           this.lat = position.coords.latitude;
-  //           this.lon = position.coords.longitude;
-  //           console.log(`${this.lat}  ${this.lon}`);
-  //         });
-  //       }
-  //     });
-  //   }
-  // }
 
   handleSubmit(zipcode: string) {
     let zipcodeInt = parseInt(zipcode);
@@ -84,31 +79,18 @@ export class WeatherPageComponent implements OnInit {
       }
       return;
     }
-    let zipcodeObserver = {
-      next: (data: any) => {
-        this.forecastData$ = this.weatherService.get5Day3HourWeatherDataByCoord(data.lat, data.lon)
-        this.forecastData$.subscribe(weatherDataObserver);
+    else this.weatherService.getWeatherDataByZipCode(zipcodeInt);
+    // let zipcodeObserver = {
+    //   next: (data: any) => {
+    //     this.currentWeatherData$?.subscribe(this.weatherDataObserver);
 
-      },
-      error: (err: Error) => { this.error = err; },
-      complete: () => { "Successfully translated zipcode to coordinates." }
-    };
+    //   },
+    //   error: (err: Error) => { this.error = err; },
+    //   complete: () => { "Successfully translated zipcode to coordinates." }
+    // };
 
-    let weatherDataObserver = {
-      next: (data: any) => {
-        this.error = undefined;
-        console.log(data);
-        this.weatherService.addCityToFavorites(data.city.id, data.city.name, data.city.coord);
-      },
-      error: (err: Error) => {
-        console.log(err);
-        this.error = err;
-      },
-      complete: () => { console.log("Done."); }
-    };
-    this.weatherService.getCoordsFromZipCode(zipcodeInt)
-      .subscribe(zipcodeObserver)
-    // .subscribe(weatherDataObserver)
+    //   this.weatherService.getCoordsFromZipCode(zipcodeInt)
+    //     .subscribe(zipcodeObserver)
   };
 
 
@@ -132,7 +114,7 @@ export class WeatherPageComponent implements OnInit {
 
   handleFavoriteCityClick(city: any) {
     console.log(`clicked and got ${city} `)
-    this.forecastData$ = this.weatherService.get5Day3HourWeatherDataByCoord(city.coord.lat, city.coord.lon);
+    this.weatherService.get5Day3HourWeatherDataByCoord(city.coord.lat, city.coord.lon);
   }
 
   getWindDirection(angle: number) {

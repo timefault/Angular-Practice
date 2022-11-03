@@ -22,14 +22,14 @@ export class MapComponent implements OnInit {
   TIMESTAMP = (new Date()).toISOString();
   DATA_FIELD = 'precipitationIntensity';
 
-  getTiles(latitude: number, longitude: number, tileSize: number, zoom: number) {
-    var sinLatitude = Math.sin(latitude * Math.PI / 180);
-    var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
-    var pixelY = (0.5 - Math.log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
-    var tileX = Math.floor(pixelX / tileSize);
-    var tileY = Math.floor(pixelY / tileSize);
-    return [tileX, tileY];
-  }
+  // getTiles(latitude: number, longitude: number, tileSize: number, zoom: number) {
+  //   var sinLatitude = Math.sin(latitude * Math.PI / 180);
+  //   var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
+  //   var pixelY = (0.5 - Math.log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
+  //   var tileX = Math.floor(pixelX / tileSize);
+  //   var tileY = Math.floor(pixelY / tileSize);
+  //   return [tileX, tileY];
+  // }
 
   ngOnInit(): void {
     this.weatherService.getCurrentCoords().subscribe(
@@ -41,6 +41,7 @@ export class MapComponent implements OnInit {
       }
     );
   }
+
   initMap(coords: number[]) {
     console.log("[!] initialized map");
     console.log("++++++coords" + coords);

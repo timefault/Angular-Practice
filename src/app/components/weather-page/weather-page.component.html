@@ -6,10 +6,10 @@
             <label for="" class="label-error" *ngIf="error">
                 * {{error.error.message}}</label>
             <button (click)="handleSubmit(zipcode.value)" class="button-submit">search</button>
-            <label for="">Favorites</label>
+            <label for="" class="favorites-label">Favorites</label>
             <ul *ngIf="favoriteCities.length">
-                <li *ngFor="let city of favoriteCities" (click)="handleFavoriteCityClick(city)">
-                    <span class="favorite-city">{{city.name}}</span>
+                <li class="favorite-city" *ngFor="let city of favoriteCities" (click)="handleFavoriteCityClick(city)">
+                    <span>{{city.name}}</span>
                 </li>
             </ul>
         </div>
@@ -17,8 +17,7 @@
     <mat-drawer-content>
         <h1 class="page-title">Weather</h1>
         <button (click)="drawer.toggle()" class="button-options">options</button>
-        <div class="flex-container" *ngIf="(forecastData$ | async) as forecastData; else Loading">
-            <div *ngIf="(currentWeatherData$ | async) as currentWeatherData"></div>
+        <div class="flex-container" *ngIf="(currentWeatherData$ | async) as forecastData; else Loading">
             <h1>{{forecastData.city.name}}</h1>
             <h2>{{forecastData.city.sunset * 1000 | date}}</h2>
             <div class="current-conditions-container">
