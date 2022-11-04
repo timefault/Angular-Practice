@@ -16,8 +16,13 @@
 html,
 
 body {
+    font-size: clamp(16px, 2vmin, 18px);
     font-family: 'Anek Teluga', "Helvetica Neue", sans-serif;
     background-color: var(--clr-background-html);
+}
+
+mat-spinner {
+    margin: auto;
 }
 
 .flex-container {

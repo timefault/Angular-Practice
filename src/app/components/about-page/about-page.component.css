@@ -8,7 +8,7 @@
     max-width: 1000px;
     background-color: hsl(120, 20%, 40%);
     padding: 1em;
-    margin: .45em;
     border-radius: 2px;
     color: #102;
+    margin: .45rem auto;
 }

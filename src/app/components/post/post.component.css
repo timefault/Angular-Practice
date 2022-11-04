@@ -4,6 +4,7 @@
     width: 80%;
     max-width: 800px;
     margin: 5px auto;
+    font-size: 1.2rem;
 }
 
 .card-actions {
@@ -42,5 +43,12 @@
 }
 
 .reply-content {
+    font-size: 1rem;
     line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+    .card {
+        width: 99%;
+    }
 }

@@ -38,6 +38,7 @@ import { UnescapePipe } from './pipes/unescape-html.pipe';
 import { GetCurrentLocationGuard } from './guards/get-current-location.guard';
 import { NavToolbarComponent } from './components/nav-toolbar/nav-toolbar.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 
 const routes: Routes = [
@@ -89,6 +90,7 @@ const routes: Routes = [
     MatToolbarModule,
     MatIconModule,
     MatDividerModule,
+    MatProgressSpinnerModule,
     RouterModule.forRoot(routes)
   ],
   providers: [GetCurrentLocationGuard],

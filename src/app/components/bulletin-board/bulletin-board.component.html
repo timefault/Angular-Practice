@@ -6,6 +6,8 @@
         <div *ngIf="(posts$ | async) as posts; else Else" class="flex-container">
             <app-post *ngFor="let post of posts.data" [post]="post"></app-post>
         </div>
-        <ng-template #Else>Loading...</ng-template>
+        <ng-template #Else>
+            <mat-spinner></mat-spinner>
+        </ng-template>
     </mat-drawer-content>
 </mat-drawer-container>
